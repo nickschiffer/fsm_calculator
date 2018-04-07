@@ -28,7 +28,8 @@ reg [1:0] s1_tb, wa_tb, raa_tb, rab_tb, c_tb;
 reg we_tb, rea_tb, reb_tb, s2_tb, clk_tb;
 
 //DUT
-DP DUT(.in1(in1_tb),
+DP DUT(
+.in1(in1_tb),
 .in2(in2_tb),
 .s1(s1_tb),
 .wa(wa_tb),
