@@ -58,6 +58,54 @@ begin
         #1 clk_tb = ~clk_tb;
 end
 
+task store_value_into_register;
+    input [2:0] register;
+    input in;
+    
+    begin
+    
+        case(in)
+            1:
+                begin
+                    s1_tb  = 2'b11;
+                    wa_tb  = register;
+                    we_tb  = 1'b1;
+                    we_tb  = 1'b0;
+                end
+            2:
+                begin
+                    s1_tb  = 2'b10;
+                    wa_tb  = register;
+                    we_tb  = 1'b1;
+                    we_tb  = 1'b0;
+                end
+            3:
+                begin
+                    s1_tb  = 2'b01;
+                    wa_tb  = register;
+                    we_tb  = 1'b1;
+                    we_tb  = 1'b0;
+                end
+            4:
+                begin
+                    s1_tb  = 2'b00;
+                    wa_tb  = register;
+                    we_tb  = 1'b1;
+                    we_tb  = 1'b0;
+                end
+        endcase
+    end
+endtask
+
+task set_RF_outputs;
+    input [3:0]  outa, outb;
+    begin
+    raa_tb <= outa;
+    rab_tb <= outb;
+    end
+endtask
+    
+
 integer result = 0;
 integer i = 0;
 
@@ -88,25 +136,28 @@ begin
     
     //Read in1 into RF
         //Select in1 with mux1
-        s1_tb = 2'b11;
+        store_value_into_register(.register(2'b00), .in(1));
+//        s1_tb = 2'b11;
            
-        //Read into address 0
-        wa_tb = 2'b00;
-        we_tb = 1'b1; #10;
-        we_tb = 1'b0;
+//        //Read into address 0
+//        wa_tb = 2'b00;
+//        we_tb = 1'b1; #10;
+//        we_tb = 1'b0;
         
     //Read in2 into RF
+        store_value_into_register(.register(2'b01), .in(2));
         //Select in2 with mux1
-        s1_tb = 2'b10;
+//        s1_tb = 2'b10;
                    
         //Read into address 1
-        wa_tb = 2'b01;
-        we_tb = 1'b1; #10;
-        we_tb = 1'b0; #10;
+//        wa_tb = 2'b01;
+//        we_tb = 1'b1; #10;
+//        we_tb = 1'b0; #10;
         
     //Set RF to output the two numbers
-        raa_tb = 2'b00;
-        rab_tb = 2'b01;
+        set_RF_outputs(.outa(2'b00), .outb(2'b01));
+//        raa_tb = 2'b00;
+//        rab_tb = 2'b01;
         rea_tb = 1'b1;
         reb_tb = 1'b1; #10;
         
@@ -146,21 +197,24 @@ begin
     //Add a number to the result
         //Store Result in RF address 2
         result = out_tb;
-        s1_tb  = 2'b00;
-        wa_tb  = 2'b10;
-        we_tb  = 1'b1; #10;
-        we_tb  = 1'b0;
+        store_value_into_register(.register(2'b10), .in(4));
+//        s1_tb  = 2'b00;
+//        wa_tb  = 2'b10;
+//        we_tb  = 1'b1; #10;
+//        we_tb  = 1'b0;
         
         //Store another number in RF address 3
         in1_tb = $random;
-        s1_tb  = 2'b11;
-        wa_tb  = 2'b11;
-        we_tb  = 1'b1; #10;
-        we_tb  = 1'b0;
+        store_value_into_register(.register(2'b11), .in(1));
+//        s1_tb  = 2'b11;
+//        wa_tb  = 2'b11;
+//        we_tb  = 1'b1; #10;
+//        we_tb  = 1'b0;
         
         // Select those two values to be read
-        raa_tb = 2'b10;
-        rab_tb = 2'b11; #10;
+        set_RF_outputs(.outa(2'b10), .outb(2'b11));
+//        raa_tb = 2'b10;
+//        rab_tb = 2'b11; #10;
         
         //Add with ALU
         c_tb = 2'b00;#10;
