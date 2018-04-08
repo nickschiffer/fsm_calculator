@@ -58,9 +58,9 @@ begin
         #1 clk_tb = ~clk_tb;
 end
 
-task store_value_into_register;
-    input [2:0] register;
-    input in;
+task automatic store_value_into_register;
+    input reg [2:0] register;
+    input reg [2:0] in;
     
     begin
     
@@ -93,11 +93,25 @@ task store_value_into_register;
     end
 endtask
 
-task set_RF_outputs;
-    input [3:0]  outa, outb;
+task automatic set_RF_outputs;
+    input reg [3:0]  outa, outb;
     begin
-    raa_tb <= outa;
-    rab_tb <= outb;
+    raa_tb = outa;
+    rab_tb = outb;
+    end
+endtask
+
+task automatic mux2_select;
+    input reg in;
+    begin
+    s2_tb = in;#10;
+    end
+endtask
+
+task automatic set_operator;
+    input reg [1:0] op;
+    begin
+    c_tb = op;#10;
     end
 endtask
     
@@ -141,41 +155,45 @@ begin
 //        we_tb = 1'b0;
         
     //Read in2 into RF
-//       store_value_into_register(.register(2'b01), .in(2));
+       store_value_into_register(.register(2'b01), .in(2));
         //Select in2 with mux1
-        s1_tb = 2'b10;
+//        s1_tb = 2'b10;
                    
         //Read into address 1
-        wa_tb = 2'b01;
-        we_tb = 1'b1; #10;
-        we_tb = 1'b0; #10;
+//        wa_tb = 2'b01;
+//        we_tb = 1'b1; #10;
+//        we_tb = 1'b0; #10;
         
     //Set RF to output the two numbers
-        //set_RF_outputs(.outa(2'b00), .outb(2'b01));
-        raa_tb = 2'b00;
-        rab_tb = 2'b01;
+        set_RF_outputs(.outa(2'b00), .outb(2'b01));
+//        raa_tb = 2'b00;
+//        rab_tb = 2'b01;
         rea_tb = 1'b1;
         reb_tb = 1'b1; #10;
         
     //Select result with MUX2
-        s2_tb = 1'b1; #10;
+        mux2_select(1'b1);
+//        s2_tb = 1'b1; #10;
         
     //Perform Calculation with ALU (ADD)
-        c_tb = 2'b00;
+        set_operator(2'b00);
+//        c_tb = 2'b00;
         if (out_tb != (in1_tb + in2_tb)%8)
         begin
             $display("Error: ADD at time %dns\nExpected: %d, Actual: %d, in1 = %d, in2 = %d", $time,(in1_tb + in2_tb), out_tb, in1_tb, in2_tb);
             $stop;
         end
     //Perform Calculation with ALU (Subtract)
-        c_tb = 2'b01; #10;
+        set_operator(2'b01);
+//        c_tb = 2'b01; #10;
         if (out_tb != (in1_tb - in2_tb))
         begin
             $display("Error: Subtract at time %dns\nExpected: %d, Actual: %d, in1 = %d, in2 = %d", $time,(in1_tb - in2_tb),out_tb, in1_tb, in2_tb);
             $stop;
         end
     //Perform Calculation with ALU (&)
-        c_tb = 2'b10; #10;
+        set_operator(2'b10);
+//        c_tb = 2'b10; #10;
          if (out_tb != (in1_tb & in2_tb))
          begin
              $display("Error: AND at time %dns\nExpected: %d, Actual: %d, in1 = %d, in2 = %d", $time,(in1_tb & in2_tb), out_tb, in1_tb, in2_tb);
@@ -183,7 +201,8 @@ begin
          end
          
     //Perform Calculation with ALU (^)
-         c_tb = 2'b11; #10;
+        set_operator(2'b11);
+//         c_tb = 2'b11; #10;
           if (out_tb != (in1_tb ^ in2_tb))
           begin
               $display("Error: XOR at time %dns\nExpected: %d, Actual: %d, in1 = %d, in2 = %d", $time,(in1_tb ^ in2_tb), out_tb, in1_tb, in2_tb);
@@ -193,27 +212,28 @@ begin
     //Add a number to the result
         //Store Result in RF address 2
         result = out_tb;
-        //store_value_into_register(.register(2'b10), .in(4));
-        s1_tb  = 2'b00;
-        wa_tb  = 2'b10;
-        we_tb  = 1'b1; #10;
-        we_tb  = 1'b0;
+        store_value_into_register(.register(2'b10), .in(4));
+//        s1_tb  = 2'b00;
+//        wa_tb  = 2'b10;
+//        we_tb  = 1'b1; #10;
+//        we_tb  = 1'b0;
         
         //Store another number in RF address 3
         in1_tb = $random;
-        //store_value_into_register(.register(2'b11), .in(1));
-        s1_tb  = 2'b11;
-        wa_tb  = 2'b11;
-        we_tb  = 1'b1; #10;
-        we_tb  = 1'b0;
+        store_value_into_register(.register(2'b11), .in(1));
+//        s1_tb  = 2'b11;
+//        wa_tb  = 2'b11;
+//        we_tb  = 1'b1; #10;
+//        we_tb  = 1'b0;
         
         // Select those two values to be read
-        //set_RF_outputs(.outa(2'b10), .outb(2'b11));
-        raa_tb = 2'b10;
-        rab_tb = 2'b11; #10;
+        set_RF_outputs(.outa(2'b10), .outb(2'b11));
+//        raa_tb = 2'b10;
+//        rab_tb = 2'b11; #10;
         
         //Add with ALU
-        c_tb = 2'b00;#10;
+        set_operator(2'b00);
+//        c_tb = 2'b00;#10;
          if (out_tb != (in1_tb + result)%8)
                begin
                    $display("Error: ADD at time %dns\nExpected: %d, Actual: %d, in1 = %d, previous result = %d", $time,(in1_tb + result), out_tb, in1_tb, result);
