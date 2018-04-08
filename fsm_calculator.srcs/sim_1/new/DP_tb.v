@@ -23,7 +23,8 @@
 module DP_tb;
 
 //TB reg's
-reg [2:0] in1_tb, in2_tb, out_tb;
+reg [2:0] in1_tb, in2_tb;
+wire [2:0] out_tb;
 reg [1:0] s1_tb, wa_tb, raa_tb, rab_tb, c_tb;
 reg we_tb, rea_tb, reb_tb, s2_tb, clk_tb;
 
@@ -41,5 +42,145 @@ DP DUT(
 .reb(reb_tb),
 .s2(s2_tb),
 .clk(clk_tb),
-.out(out_tb));  
+.out(out_tb));
+
+//task tick;
+//    input clk_tb;
+//    begin
+//        clk_tb <= 1;
+//        #1;
+//        clk_tb <= 0;
+//    end
+//endtask
+
+always 
+begin
+        #1 clk_tb = ~clk_tb;
+end
+
+integer result = 0;
+integer i = 0;
+
+initial
+begin
+$display("DP Test Start");
+    //Start clk
+    clk_tb = 1'b0;
+    //set mux1 out to 0
+    s1_tb  = 2'b01;
+    //set mux2 out to 0
+    s2_tb  = 1'b0;
+    //deactivate ALU
+    c_tb   = 1'b0;
+    //Register File
+    we_tb  = 1'b0;
+    wa_tb  = 2'b0;
+    rea_tb = 1'b0;
+    reb_tb = 1'b0;
+    raa_tb = 2'b0;
+    rab_tb = 2'b0;
+    //Two random operands
+for (i = 0; i < 100; i = i + 1)
+begin
+    in1_tb = $random;
+    in2_tb = $random;
+    #10;
+    
+    //Read in1 into RF
+        //Select in1 with mux1
+        s1_tb = 2'b11;
+           
+        //Read into address 0
+        wa_tb = 2'b00;
+        we_tb = 1'b1; #10;
+        we_tb = 1'b0;
+        
+    //Read in2 into RF
+        //Select in2 with mux1
+        s1_tb = 2'b10;
+                   
+        //Read into address 1
+        wa_tb = 2'b01;
+        we_tb = 1'b1; #10;
+        we_tb = 1'b0; #10;
+        
+    //Set RF to output the two numbers
+        raa_tb = 2'b00;
+        rab_tb = 2'b01;
+        rea_tb = 1'b1;
+        reb_tb = 1'b1; #10;
+        
+    //Select result with MUX2
+        s2_tb = 1'b1; #10;
+        
+    //Perform Calculation with ALU (ADD)
+        c_tb = 2'b00;
+        if (out_tb != (in1_tb + in2_tb)%8)
+        begin
+            $display("Error: ADD at time %dns\nExpected: %d, Actual: %d, in1 = %d, in2 = %d", $time,(in1_tb + in2_tb), out_tb, in1_tb, in2_tb);
+            $stop;
+        end
+    //Perform Calculation with ALU (Subtract)
+        c_tb = 2'b01; #10;
+        if (out_tb != (in1_tb - in2_tb))
+        begin
+            $display("Error: Subtract at time %dns\nExpected: %d, Actual: %d, in1 = %d, in2 = %d", $time,(in1_tb - in2_tb),out_tb, in1_tb, in2_tb);
+            $stop;
+        end
+    //Perform Calculation with ALU (&)
+        c_tb = 2'b10; #10;
+         if (out_tb != (in1_tb & in2_tb))
+         begin
+             $display("Error: AND at time %dns\nExpected: %d, Actual: %d, in1 = %d, in2 = %d", $time,(in1_tb & in2_tb), out_tb, in1_tb, in2_tb);
+             $stop;
+         end
+         
+    //Perform Calculation with ALU (^)
+         c_tb = 2'b11; #10;
+          if (out_tb != (in1_tb ^ in2_tb))
+          begin
+              $display("Error: XOR at time %dns\nExpected: %d, Actual: %d, in1 = %d, in2 = %d", $time,(in1_tb ^ in2_tb), out_tb, in1_tb, in2_tb);
+              $stop;
+          end
+          
+    //Add a number to the result
+        //Store Result in RF address 2
+        result = out_tb;
+        s1_tb  = 2'b00;
+        wa_tb  = 2'b10;
+        we_tb  = 1'b1; #10;
+        we_tb  = 1'b0;
+        
+        //Store another number in RF address 3
+        in1_tb = $random;
+        s1_tb  = 2'b11;
+        wa_tb  = 2'b11;
+        we_tb  = 1'b1; #10;
+        we_tb  = 1'b0;
+        
+        // Select those two values to be read
+        raa_tb = 2'b10;
+        rab_tb = 2'b11; #10;
+        
+        //Add with ALU
+        c_tb = 2'b00;#10;
+         if (out_tb != (in1_tb + result)%8)
+               begin
+                   $display("Error: ADD at time %dns\nExpected: %d, Actual: %d, in1 = %d, previous result = %d", $time,(in1_tb + result), out_tb, in1_tb, result);
+                   $stop;
+               end
+          
+        
+        
+        #20;
+end
+        
+    
+    
+
+
+
+$display("Test Successful. Time=%dns", $time);
+$finish;
+end
 endmodule
