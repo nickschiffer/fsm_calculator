@@ -24,7 +24,6 @@ module FSM_CU(
     input go, clk,
     input [1:0] op,
     output [3:0] cs,
-    output done,
     output reg [14:0] cw //s1[14:13], wa[12:11], we[10], raa[9:8], rea[7], rab[6:5], reb[4], c[3:2], s2[1], done[0]
 );
 
@@ -87,6 +86,8 @@ begin
     endcase
 
 end
+
+assign cs = CS;
           
 
 
