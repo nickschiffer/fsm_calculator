@@ -138,7 +138,7 @@ $display("DP Test Start");
     raa_tb = 2'b0;
     rab_tb = 2'b0;
     //Two random operands
-for (i = 0; i < 100; i = i + 1)
+for (i = 0; i < 2; i = i + 1)
 begin
     in1_tb = $random;
     in2_tb = $random;
