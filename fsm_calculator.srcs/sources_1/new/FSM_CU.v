@@ -84,9 +84,9 @@ begin
         R1_xor_R2_into_R3:   cw <= 15'b00_11_1_01_1_10_1_11_0_0;
         out_done:            cw <= 15'b01_00_0_11_1_11_1_10_1_1;    
     endcase
-//cs = CS;
+
 end
-    
+
 assign cs = CS;
           
 
