@@ -41,11 +41,11 @@
         set_property -dict {PACKAGE_PIN K2  IOSTANDARD LVCMOS33} [get_ports {LEDSEL[6]}];
         set_property -dict {PACKAGE_PIN U13 IOSTANDARD LVCMOS33} [get_ports {LEDSEL[7]}];
     #Inputs out
-        #A
+        #in1
             set_property -dict {PACKAGE_PIN N14 IOSTANDARD LVCMOS33} [get_ports {in1_out[0]}]; 
             set_property -dict {PACKAGE_PIN R18 IOSTANDARD LVCMOS33} [get_ports {in1_out[1]}];
             set_property -dict {PACKAGE_PIN V17 IOSTANDARD LVCMOS33} [get_ports {in1_out[2]}];
-        #B
+        #in2
             set_property -dict {PACKAGE_PIN H17 IOSTANDARD LVCMOS33} [get_ports {in2_out[0]}];
             set_property -dict {PACKAGE_PIN K15 IOSTANDARD LVCMOS33} [get_ports {in2_out[1]}];
             set_property -dict {PACKAGE_PIN J13 IOSTANDARD LVCMOS33} [get_ports {in2_out[2]}];
