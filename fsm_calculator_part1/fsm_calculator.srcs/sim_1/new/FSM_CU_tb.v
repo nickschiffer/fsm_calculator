@@ -145,7 +145,7 @@ module FSM_CU_tb;
 			    endcase
 			end
 		end
-    $display("Test sucessfull.\n");
+    $display("Test Successful.\n");
     $finish;
 	end
 endmodule
