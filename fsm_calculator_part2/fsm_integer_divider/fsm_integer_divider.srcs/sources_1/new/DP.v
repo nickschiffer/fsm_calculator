@@ -29,7 +29,7 @@ input [4:0] SRX_cw,
 input [1:0] SRY_cw,
 input [3:0] SRR_cw,
 output [6:0] sw,
-output reg [3:0] quotient, remainder
+output [3:0] quotient, remainder
 
     );
 
@@ -39,9 +39,13 @@ wire [1:0] cnt_out;
 assign sw = {R_lt_Y, cnt_out, divisor};
 
 // Interconnects
-wire [4:0] mux2_out;
+wire [4:0] RIN_mux_out, R_mux_out, Q_mux_out;
 wire [3:0] sub_out;
 wire [3:0] R_out, Y_out, X_out;
+
+//Outputs
+assign quotient = Q_mux_out;
+assign remainder = R_mux_out;
 
 // Control Signals
     // Muxes
@@ -83,12 +87,12 @@ assign {SRR_rst, SRR_sl, SRR_sr, SRR_ld }              = SRR_cw;
 
 // Initiate Models    
 UD_counter           #(2) COUNT  (.D(UD_D), .Q(cnt_out), .ld(UD_ld), .ud(UD_ud), .ce(UD_ce),.clk(clk), .rst(UD_rst));
-mux_2_to_1           #(4) RINMUX (.d1(sub_out), .d0(4'b0), .sel(RIN_mux_sel));
-mux_2_to_1           #(4) RMUX   (.d1(R_out), .d0(4'b0), .sel(R_mux_sel));
-mux_2_to_1           #(4) QMUX   (.d1(X_out), .d0(4'b0), .sel(Q_mux_sel));
+mux_2_to_1           #(4) RINMUX (.d1(sub_out), .d0(4'b0), .sel(RIN_mux_sel), .y(RIN_mux_out));
+mux_2_to_1           #(4) RMUX   (.d1(R_out), .d0(4'b0), .sel(R_mux_sel), .y(R_mux_out));
+mux_2_to_1           #(4) QMUX   (.d1(X_out), .d0(4'b0), .sel(Q_mux_sel), .y(Q_mux_out));
 shift_register       #(4) X      (.D(dividend), .Q(X_out), .sl(SRX_sl), .sr(SRX_sr), .ld(SRX_ld), .leftIn(1'b0), .rightIn(SRX_rightIn), .rst(SRX_rst), .clk(clk));
 shift_register       #(4) Y      (.D(divisor),  .Q(Y_out), .sl(1'b0), .sr(1'b0), .ld(SRY_ld), .leftIn(1'b0), .rightIn(1'b0), .rst(SRY_rst), .clk(clk));
-shift_register       #(5) R      (.D(mux2_out), .Q(R_out), .sl(SRR_sl), .sr(SRR_sr), .ld(SRR_ld), .leftIn(1'b0), .rightIn(SRY_rightIn), .rst(SRY_rst), .clk(clk));
+shift_register       #(5) R      (.D(RIN_mux_out), .Q(R_out), .sl(SRR_sl), .sr(SRR_sr), .ld(SRR_ld), .leftIn(1'b0), .rightIn(SRR_rightIn), .rst(SRY_rst), .clk(clk));
 subractor            #(4) SUB    (.A(R_out), .B(Y_out), .C(sub_out));
 magnitude_comparator #(4) COMP   (.A(R_out), .B(Y_out), .less_than(R_lt_Y));
 
