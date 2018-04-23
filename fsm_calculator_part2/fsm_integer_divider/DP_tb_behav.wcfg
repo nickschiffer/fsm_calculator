@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="DP_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="DP_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="34232900fs"></ZoomStartTime>
+      <ZoomEndTime time="222824627fs"></ZoomEndTime>
+      <Cursor1Time time="59504000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="109"></NameColumnWidth>
+      <ValueColumnWidth column_width="152"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="52" />
+   <wvobject fp_name="/DP_tb/dividend_tb" type="array">
+      <obj_property name="ElementShortName">dividend_tb[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dividend_tb[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/divisor_tb" type="array">
+      <obj_property name="ElementShortName">divisor_tb[3:0]</obj_property>
+      <obj_property name="ObjectShortName">divisor_tb[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/quotient_tb" type="array">
+      <obj_property name="ElementShortName">quotient_tb[3:0]</obj_property>
+      <obj_property name="ObjectShortName">quotient_tb[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/remainder_tb" type="array">
+      <obj_property name="ElementShortName">remainder_tb[3:0]</obj_property>
+      <obj_property name="ObjectShortName">remainder_tb[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/sw_tb" type="array">
+      <obj_property name="ElementShortName">sw_tb[6:0]</obj_property>
+      <obj_property name="ObjectShortName">sw_tb[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/clk_tb" type="logic">
+      <obj_property name="ElementShortName">clk_tb</obj_property>
+      <obj_property name="ObjectShortName">clk_tb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/rst_tb" type="logic">
+      <obj_property name="ElementShortName">rst_tb</obj_property>
+      <obj_property name="ObjectShortName">rst_tb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/mux_cw_tb" type="array">
+      <obj_property name="ElementShortName">mux_cw_tb[2:0]</obj_property>
+      <obj_property name="ObjectShortName">mux_cw_tb[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/UD_counter_cw_tb" type="array">
+      <obj_property name="ElementShortName">UD_counter_cw_tb[5:0]</obj_property>
+      <obj_property name="ObjectShortName">UD_counter_cw_tb[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/SRX_cw_tb" type="array">
+      <obj_property name="ElementShortName">SRX_cw_tb[3:0]</obj_property>
+      <obj_property name="ObjectShortName">SRX_cw_tb[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/SRY_cw_tb" type="array">
+      <obj_property name="ElementShortName">SRY_cw_tb[1:0]</obj_property>
+      <obj_property name="ObjectShortName">SRY_cw_tb[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/SRR_cw_tb" type="array">
+      <obj_property name="ElementShortName">SRR_cw_tb[3:0]</obj_property>
+      <obj_property name="ObjectShortName">SRR_cw_tb[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/dividend" type="array">
+      <obj_property name="ElementShortName">dividend[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dividend[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/divisor" type="array">
+      <obj_property name="ElementShortName">divisor[3:0]</obj_property>
+      <obj_property name="ObjectShortName">divisor[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/mux_cw" type="array">
+      <obj_property name="ElementShortName">mux_cw[2:0]</obj_property>
+      <obj_property name="ObjectShortName">mux_cw[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/UD_counter_cw" type="array">
+      <obj_property name="ElementShortName">UD_counter_cw[5:0]</obj_property>
+      <obj_property name="ObjectShortName">UD_counter_cw[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRX_cw" type="array">
+      <obj_property name="ElementShortName">SRX_cw[3:0]</obj_property>
+      <obj_property name="ObjectShortName">SRX_cw[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRY_cw" type="array">
+      <obj_property name="ElementShortName">SRY_cw[1:0]</obj_property>
+      <obj_property name="ObjectShortName">SRY_cw[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRR_cw" type="array">
+      <obj_property name="ElementShortName">SRR_cw[3:0]</obj_property>
+      <obj_property name="ObjectShortName">SRR_cw[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/sw" type="array">
+      <obj_property name="ElementShortName">sw[6:0]</obj_property>
+      <obj_property name="ObjectShortName">sw[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/quotient" type="array">
+      <obj_property name="ElementShortName">quotient[3:0]</obj_property>
+      <obj_property name="ObjectShortName">quotient[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/remainder" type="array">
+      <obj_property name="ElementShortName">remainder[3:0]</obj_property>
+      <obj_property name="ObjectShortName">remainder[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/R_lt_Y" type="logic">
+      <obj_property name="ElementShortName">R_lt_Y</obj_property>
+      <obj_property name="ObjectShortName">R_lt_Y</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/cnt_out" type="array">
+      <obj_property name="ElementShortName">cnt_out[1:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt_out[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/RIN_mux_out" type="array">
+      <obj_property name="ElementShortName">RIN_mux_out[3:0]</obj_property>
+      <obj_property name="ObjectShortName">RIN_mux_out[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/R_mux_out" type="array">
+      <obj_property name="ElementShortName">R_mux_out[3:0]</obj_property>
+      <obj_property name="ObjectShortName">R_mux_out[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/Q_mux_out" type="array">
+      <obj_property name="ElementShortName">Q_mux_out[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Q_mux_out[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/sub_out" type="array">
+      <obj_property name="ElementShortName">sub_out[3:0]</obj_property>
+      <obj_property name="ObjectShortName">sub_out[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/Y_out" type="array">
+      <obj_property name="ElementShortName">Y_out[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Y_out[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/X_out" type="array">
+      <obj_property name="ElementShortName">X_out[3:0]</obj_property>
+      <obj_property name="ObjectShortName">X_out[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/R_out" type="array">
+      <obj_property name="ElementShortName">R_out[4:0]</obj_property>
+      <obj_property name="ObjectShortName">R_out[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/RIN_mux_sel" type="logic">
+      <obj_property name="ElementShortName">RIN_mux_sel</obj_property>
+      <obj_property name="ObjectShortName">RIN_mux_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/R_mux_sel" type="logic">
+      <obj_property name="ElementShortName">R_mux_sel</obj_property>
+      <obj_property name="ObjectShortName">R_mux_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/Q_mux_sel" type="logic">
+      <obj_property name="ElementShortName">Q_mux_sel</obj_property>
+      <obj_property name="ObjectShortName">Q_mux_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/UD_D" type="array">
+      <obj_property name="ElementShortName">UD_D[1:0]</obj_property>
+      <obj_property name="ObjectShortName">UD_D[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/UD_ld" type="logic">
+      <obj_property name="ElementShortName">UD_ld</obj_property>
+      <obj_property name="ObjectShortName">UD_ld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/UD_ud" type="logic">
+      <obj_property name="ElementShortName">UD_ud</obj_property>
+      <obj_property name="ObjectShortName">UD_ud</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/UD_ce" type="logic">
+      <obj_property name="ElementShortName">UD_ce</obj_property>
+      <obj_property name="ObjectShortName">UD_ce</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/UD_rst" type="logic">
+      <obj_property name="ElementShortName">UD_rst</obj_property>
+      <obj_property name="ObjectShortName">UD_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRX_rst" type="logic">
+      <obj_property name="ElementShortName">SRX_rst</obj_property>
+      <obj_property name="ObjectShortName">SRX_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRX_sl" type="logic">
+      <obj_property name="ElementShortName">SRX_sl</obj_property>
+      <obj_property name="ObjectShortName">SRX_sl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRX_ld" type="logic">
+      <obj_property name="ElementShortName">SRX_ld</obj_property>
+      <obj_property name="ObjectShortName">SRX_ld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRX_rightIn" type="logic">
+      <obj_property name="ElementShortName">SRX_rightIn</obj_property>
+      <obj_property name="ObjectShortName">SRX_rightIn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRY_rst" type="logic">
+      <obj_property name="ElementShortName">SRY_rst</obj_property>
+      <obj_property name="ObjectShortName">SRY_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRY_ld" type="logic">
+      <obj_property name="ElementShortName">SRY_ld</obj_property>
+      <obj_property name="ObjectShortName">SRY_ld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRR_rst" type="logic">
+      <obj_property name="ElementShortName">SRR_rst</obj_property>
+      <obj_property name="ObjectShortName">SRR_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRR_sl" type="logic">
+      <obj_property name="ElementShortName">SRR_sl</obj_property>
+      <obj_property name="ObjectShortName">SRR_sl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRR_sr" type="logic">
+      <obj_property name="ElementShortName">SRR_sr</obj_property>
+      <obj_property name="ObjectShortName">SRR_sr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRR_ld" type="logic">
+      <obj_property name="ElementShortName">SRR_ld</obj_property>
+      <obj_property name="ObjectShortName">SRR_ld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DP_tb/DUT/SRR_rightIn" type="logic">
+      <obj_property name="ElementShortName">SRR_rightIn</obj_property>
+      <obj_property name="ObjectShortName">SRR_rightIn</obj_property>
+   </wvobject>
+</wave_config>

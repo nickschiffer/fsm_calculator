@@ -26,7 +26,7 @@ module mux_2_to_1 #(parameter dataIN_width = 4)(
     output reg [dataIN_width - 1 : 0] y
     );
 
-always @ (d1, d0)
+always @ (d1, d0, sel)
 begin
     if (sel)
         y <= d1;
