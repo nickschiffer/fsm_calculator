@@ -85,7 +85,7 @@ assign {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}         = SRX_cw;
 assign {SRY_rst, SRY_ld}                              = SRY_cw;
 assign {SRR_rst, SRR_sl, SRR_sr, SRR_ld}              = SRR_cw;
 
-// Initiate Models    
+// Initiate Modules    
 UD_counter           #(3) COUNT  (.D(UD_D), .Q(cnt_out), .ld(UD_ld), .ud(UD_ud), .ce(UD_ce),.clk(clk), .rst(UD_rst));
 mux_2_to_1           #(4) RINMUX (.d1(sub_out), .d0(4'b0), .sel(RIN_mux_sel), .y(RIN_mux_out));
 mux_2_to_1           #(4) RMUX   (.d1(R_out[3:0]), .d0(4'b0), .sel(R_mux_sel), .y(R_mux_out));
