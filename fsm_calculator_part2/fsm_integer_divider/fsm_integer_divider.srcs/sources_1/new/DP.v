@@ -24,18 +24,18 @@ module DP(
 input [3:0] dividend, divisor,
 input clk, rst,
 input [2:0] mux_cw,
-input [5:0] UD_counter_cw,
+input [6:0] UD_counter_cw,
 input [3:0] SRX_cw,
 input [1:0] SRY_cw,
 input [3:0] SRR_cw,
-output [6:0] sw,
+output [7:0] sw,
 output [3:0] quotient, remainder
 
     );
 
 //Status Word sw = {R_lt_y, cnt_out, divisor}
 wire R_lt_Y;
-wire [1:0] cnt_out;
+wire [2:0] cnt_out;
 assign sw = {R_lt_Y, cnt_out, divisor};
 
 // Interconnects
@@ -57,7 +57,7 @@ assign remainder = R_mux_out;
         // Q
             wire Q_mux_sel;
     // UD Counter
-        wire [1:0] UD_D;
+        wire [2:0] UD_D;
         wire UD_ld;
         wire UD_ud;
         wire UD_ce;
@@ -86,7 +86,7 @@ assign {SRY_rst, SRY_ld}                              = SRY_cw;
 assign {SRR_rst, SRR_sl, SRR_sr, SRR_ld}              = SRR_cw;
 
 // Initiate Models    
-UD_counter           #(2) COUNT  (.D(UD_D), .Q(cnt_out), .ld(UD_ld), .ud(UD_ud), .ce(UD_ce),.clk(clk), .rst(UD_rst));
+UD_counter           #(3) COUNT  (.D(UD_D), .Q(cnt_out), .ld(UD_ld), .ud(UD_ud), .ce(UD_ce),.clk(clk), .rst(UD_rst));
 mux_2_to_1           #(4) RINMUX (.d1(sub_out), .d0(4'b0), .sel(RIN_mux_sel), .y(RIN_mux_out));
 mux_2_to_1           #(4) RMUX   (.d1(R_out[3:0]), .d0(4'b0), .sel(R_mux_sel), .y(R_mux_out));
 mux_2_to_1           #(4) QMUX   (.d1(X_out), .d0(4'b0), .sel(Q_mux_sel), .y(Q_mux_out));

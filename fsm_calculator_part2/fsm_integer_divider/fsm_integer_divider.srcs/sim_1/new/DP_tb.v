@@ -26,12 +26,12 @@ module DP_tb;
 reg [3:0] dividend_tb, divisor_tb;
 // Output Reg's
 wire [3:0] quotient_tb, remainder_tb;
-wire [6:0] sw_tb;
+wire [7:0] sw_tb;
 
 // Control Signals
 reg clk_tb, rst_tb;
 reg [2:0] mux_cw_tb;
-reg [5:0] UD_counter_cw_tb;
+reg [6:0] UD_counter_cw_tb;
 reg [3:0] SRX_cw_tb;
 reg [1:0] SRY_cw_tb;
 reg [3:0] SRR_cw_tb;
@@ -154,6 +154,59 @@ task automatic step_3;
     end
 endtask
 
+task automatic step_3_ud;
+    begin
+        // Initialize UD Counter
+            // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
+            UD_counter_cw_tb = 7'b100_1_0_1_1;
+            tick;
+            UD_counter_cw_tb = 7'b000_0_0_0_1;
+            while (sw_tb[6:4] != 0)
+                begin
+                $display("Counter = %0d",sw_tb[6:4]);
+                    if (sw_tb[7]) // R_lt_Y signal true
+                        begin
+                            $display("Hit R < Y at Loop iteration #%0d at %0dns",i, $time);
+                            i = i + 1;
+                            // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
+                            // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
+                            SRR_cw_tb = 4'b0_1_0_0;
+                            SRX_cw_tb = 4'b0_1_0_0;
+                            tick;
+                            SRR_cw_tb = 4'b0_0_0_0;
+                            SRX_cw_tb = 4'b0_0_0_0;
+                            tick;
+                        end
+                    else
+                        begin
+                            $display("Hit R >= Y at Loop iteration #%0d at %0dns",i, $time);
+                            i = i + 1;
+                            // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
+                            // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
+                            SRR_cw_tb = 4'b0_0_0_1;
+                            tick;
+                            SRR_cw_tb = 4'b0_1_0_0;
+                            tick;
+                            SRR_cw_tb = 4'b0_0_0_0;
+                            SRX_cw_tb = 4'b0_1_0_1;
+                            tick;
+                            SRR_cw_tb = 4'b0_0_0_0;
+                            SRX_cw_tb = 4'b0_0_0_0;
+                            tick;
+                        end
+
+                // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
+                UD_counter_cw_tb = 7'b000_0_0_1_1;
+                tick;
+                UD_counter_cw_tb = 7'b000_0_0_0_1;
+                end
+               // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
+                UD_counter_cw_tb = 7'b000_0_0_0_0;
+                tick;
+                
+    end
+endtask
+
 task automatic step_4;
     begin
         /* Step 4: Right Shift the Remainder by 1 bit
@@ -167,7 +220,14 @@ task automatic step_4;
     end
 endtask
 
-task automatic check_result;
+task automatic show_results;
+    begin
+         mux_cw_tb = 3'b1_1_1;
+         tick;
+    end
+endtask
+
+task automatic check_results;
     begin
         inferred_quotient = dividend_tb / divisor_tb;
         inferred_remainder = dividend_tb % divisor_tb;
@@ -183,13 +243,15 @@ endtask
 initial
 begin
 $display("DP Test Start");
-for (j = 0; j < 100; j = j + 1)
-begin
+//for (j = 0; j < 100; j = j + 1)
+//begin
 //initialize control signals
     clk_tb = 0;
     rst_tb = 0;
-    dividend_tb = {$random};
-    divisor_tb  = {$random};
+    //dividend_tb = {$random};
+    //divisor_tb  = {$random};
+    dividend_tb = 4'd10;
+    divisor_tb  = 4'd3;
     mux_cw_tb = 0;
     UD_counter_cw_tb = 0;
     SRX_cw_tb = 0;
@@ -225,7 +287,7 @@ for (i  = 3; i >= 0; i = i -  1)
             end
      end
 */
-    step_3;
+    step_3_ud;
         
 /* Step 4: Right Shift the Remainder by 1 bit
     R[4:0] ? {0, R[4:1]}
@@ -233,15 +295,14 @@ for (i  = 3; i >= 0; i = i -  1)
     step_4;
     
 // Select Quotient and Remainder with output muxes
-    mux_cw_tb = 3'b1_1_1;
-    tick;
+    show_results;
 
 // Check Result
-    check_result;
+    check_results;
     
  
 $display("The Result of %0d / %0d is %0d Remainder %0d",dividend_tb,divisor_tb,quotient_tb, remainder_tb);
-end
+//end
 $display("Test Successful. Time=%0dns", $time);
 $finish;
 end
