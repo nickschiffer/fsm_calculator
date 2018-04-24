@@ -87,7 +87,10 @@
 !*.elf
 !*.bmm
 !*.xmp
-
+#########
+#PDF
+#########
+!*.pdf
 #########
 #Unwanted Directories
 #########
