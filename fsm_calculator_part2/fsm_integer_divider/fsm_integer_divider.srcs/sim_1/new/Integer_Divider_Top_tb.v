@@ -42,9 +42,9 @@ module Integer_Divider_Top_tb;
 task automatic tick;
     begin
         clk_tb = 1'b0;
-        #5;
+        #50;
         clk_tb = 1'b1;
-        #5;
+        #50;
     end
 endtask
 
@@ -54,13 +54,27 @@ begin
 go_tb = 0;
 clk_tb = 0;
 rst_tb = 0;
-dividend_tb = 4'd8;
+dividend_tb = 4'd10;
 divisor_tb = 4'd3;
 $display("Begin Integer_Divider_Top Test");
-tick;
+//tick;
+//go_tb = 1;
+//tick;
+$display("Error TB initial = %0d", err_done_tb);
+$display("Current State = %0d", cs_tb);
+$display("Quotient = %0d, Remainder = %0d", quotient_tb, remainder_tb);
+$display("Error/Done = %0d", err_done_tb);
 go_tb = 1;
+$display("Error TB initial = %0d", err_done_tb);
+$display("Current State = %0d", cs_tb);
+$display("Quotient = %0d, Remainder = %0d", quotient_tb, remainder_tb);
+$display("Error/Done = %0d", err_done_tb);
 tick;
 $display("Error TB initial = %0d", err_done_tb);
+$display("Current State = %0d", cs_tb);
+$display("Quotient = %0d, Remainder = %0d", quotient_tb, remainder_tb);
+$display("Error/Done = %0d", err_done_tb);
+
 while (err_done_tb == 2'b0)
 begin
     tick;
@@ -69,7 +83,6 @@ begin
     $display("Error/Done = %0d", err_done_tb);
     
 end
-
 quotient_inferred_tb = dividend_tb / divisor_tb;
 remainder_inferred_tb = dividend_tb % divisor_tb;
 

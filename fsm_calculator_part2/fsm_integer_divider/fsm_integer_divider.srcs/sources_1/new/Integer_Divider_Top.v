@@ -42,6 +42,12 @@ wire [1:0] done_err_from_CU;
 wire [3:0] cs_from_CU;
 wire [3:0] quotient_from_DP;
 wire [3:0] remainder_from_DP;
+wire R_lt_Y_inf;
+
+assign cs = cs_from_CU;
+assign err_done = done_err_from_CU;
+assign quotient = quotient_from_DP;
+assign remainder = remainder_from_DP;
 
 CU CU (
     .go(go),
@@ -54,8 +60,11 @@ CU CU (
     .SRY_cw(SRY_cw_from_CU),
     .SRR_cw(SRR_cw_from_CU),
     .done_err(done_err_from_CU),
-    .cs(cs_from_CU)
+    .cs(cs_from_CU),
+    .R_lt_Y_inf(R_lt_Y_inf)
 );
+
+
 DP DP (
     .dividend(dividend),
     .divisor(divisor),
@@ -68,11 +77,9 @@ DP DP (
     .SRR_cw(SRR_cw_from_CU),
     .sw(sw_from_DP),
     .quotient(quotient_from_DP),
-    .remainder(remainder_from_DP)
+    .remainder(remainder_from_DP),
+    .R_lt_Y_inf(R_lt_Y_inf)
 );
-assign cs = cs_from_CU;
-assign err_done = done_err_from_CU;
-assign quotient = quotient_from_DP;
-assign remainder = remainder_from_DP;
+
 
 endmodule
