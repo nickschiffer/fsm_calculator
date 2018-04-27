@@ -63,7 +63,7 @@ module CU(
                 end                     
             S1:      NS = S2;
             S2:      NS = S3;
-            S3:      NS = (R_lt_Y) ? S4 : S5;    
+            S3:      NS = (R_lt_Y) ? S5 : S4;    
             S4:      NS = (cnt_out == 0) ? S6 : S3;
             S5:      NS = (cnt_out == 0) ? S6 : S3;
             S6:      NS = S7;
@@ -82,6 +82,7 @@ module CU(
         case(CS)               
             S0:
                 begin
+                    
                     mux_cw <= 3'b1_0_0;
                     done_err <= 2'b0_0;
                 end
@@ -112,7 +113,7 @@ module CU(
             S3:
                 begin
                     // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
-                    if (NS == S5)
+                    if (NS == S4)
                          SRR_cw <= 4'b0_0_0_1;
                     else
                         SRR_cw <= 4'b0_0_0_0;
@@ -120,9 +121,6 @@ module CU(
                     SRX_cw <= 4'b0_0_0_0;
                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_1_1; 
-                    
-                    if (NS == S5)
-                         SRR_cw <= 4'b0_0_0_1;
                                                 
                 end         
             S4:
@@ -130,7 +128,7 @@ module CU(
                     // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_1_0_0;
                     // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
-                    SRX_cw <= 4'b0_1_0_0;
+                    SRX_cw <= 4'b0_1_0_1;
                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_0_1;            
                 end         
@@ -139,7 +137,7 @@ module CU(
                     // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_1_0_0;
                     // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
-                    SRX_cw <= 4'b0_1_0_1;
+                    SRX_cw <= 4'b0_1_0_0;
                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_0_1;
                 end         
@@ -155,7 +153,7 @@ module CU(
                     if (error)
                         begin
                             // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
-                            SRR_cw <= 4'b0_0_1_0;
+                            SRR_cw <= 4'b0_0_0_0;
                             // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                             SRX_cw <= 4'b0_0_0_0;
 

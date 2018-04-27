@@ -54,7 +54,7 @@ begin
 go_tb = 0;
 clk_tb = 0;
 rst_tb = 0;
-dividend_tb = 4'd10;
+dividend_tb = 4'd8;
 divisor_tb = 4'd3;
 $display("Begin Integer_Divider_Top Test");
 tick;

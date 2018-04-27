@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="4333333fs"></ZoomStartTime>
-      <ZoomEndTime time="30333334fs"></ZoomEndTime>
-      <Cursor1Time time="26000000fs"></Cursor1Time>
+      <ZoomStartTime time="21666666fs"></ZoomStartTime>
+      <ZoomEndTime time="105529412fs"></ZoomEndTime>
+      <Cursor1Time time="130000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="109"></NameColumnWidth>
-      <ValueColumnWidth column_width="148"></ValueColumnWidth>
+      <ValueColumnWidth column_width="132"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="84" />
+   <WVObjectSize size="86" />
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/go" type="logic">
       <obj_property name="ElementShortName">go</obj_property>
       <obj_property name="ObjectShortName">go</obj_property>
@@ -73,8 +73,8 @@
       <obj_property name="ObjectShortName">SRX_cw_from_CU[3:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/SRY_cw_from_CU" type="array">
-      <obj_property name="ElementShortName">SRY_cw_from_CU[3:0]</obj_property>
-      <obj_property name="ObjectShortName">SRY_cw_from_CU[3:0]</obj_property>
+      <obj_property name="ElementShortName">SRY_cw_from_CU[1:0]</obj_property>
+      <obj_property name="ObjectShortName">SRY_cw_from_CU[1:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/SRR_cw_from_CU" type="array">
       <obj_property name="ElementShortName">SRR_cw_from_CU[3:0]</obj_property>
@@ -123,14 +123,17 @@
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/SRX_cw" type="array">
       <obj_property name="ElementShortName">SRX_cw[3:0]</obj_property>
       <obj_property name="ObjectShortName">SRX_cw[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/SRY_cw" type="array">
       <obj_property name="ElementShortName">SRY_cw[1:0]</obj_property>
       <obj_property name="ObjectShortName">SRY_cw[1:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/SRR_cw" type="array">
       <obj_property name="ElementShortName">SRR_cw[3:0]</obj_property>
       <obj_property name="ObjectShortName">SRR_cw[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/done_err" type="array">
       <obj_property name="ElementShortName">done_err[1:0]</obj_property>
@@ -163,38 +166,6 @@
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/NS" type="array">
       <obj_property name="ElementShortName">NS[3:0]</obj_property>
       <obj_property name="ObjectShortName">NS[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/S0" type="array">
-      <obj_property name="ElementShortName">S0[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S0[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/S1" type="array">
-      <obj_property name="ElementShortName">S1[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S1[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/S2" type="array">
-      <obj_property name="ElementShortName">S2[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S2[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/S3" type="array">
-      <obj_property name="ElementShortName">S3[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S3[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/S4" type="array">
-      <obj_property name="ElementShortName">S4[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S4[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/S5" type="array">
-      <obj_property name="ElementShortName">S5[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S5[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/S6" type="array">
-      <obj_property name="ElementShortName">S6[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S6[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/CU/S7" type="array">
-      <obj_property name="ElementShortName">S7[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S7[3:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/dividend" type="array">
       <obj_property name="ElementShortName">dividend[3:0]</obj_property>
@@ -275,10 +246,12 @@
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/X_out" type="array">
       <obj_property name="ElementShortName">X_out[3:0]</obj_property>
       <obj_property name="ObjectShortName">X_out[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R_out" type="array">
       <obj_property name="ElementShortName">R_out[4:0]</obj_property>
       <obj_property name="ObjectShortName">R_out[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/RIN_mux_sel" type="logic">
       <obj_property name="ElementShortName">RIN_mux_sel</obj_property>
@@ -355,5 +328,49 @@
    <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/SRR_rightIn" type="logic">
       <obj_property name="ElementShortName">SRR_rightIn</obj_property>
       <obj_property name="ObjectShortName">SRR_rightIn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/sl" type="logic">
+      <obj_property name="ElementShortName">sl</obj_property>
+      <obj_property name="ObjectShortName">sl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/sr" type="logic">
+      <obj_property name="ElementShortName">sr</obj_property>
+      <obj_property name="ObjectShortName">sr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/ld" type="logic">
+      <obj_property name="ElementShortName">ld</obj_property>
+      <obj_property name="ObjectShortName">ld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/leftIn" type="logic">
+      <obj_property name="ElementShortName">leftIn</obj_property>
+      <obj_property name="ObjectShortName">leftIn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/rightIn" type="logic">
+      <obj_property name="ElementShortName">rightIn</obj_property>
+      <obj_property name="ObjectShortName">rightIn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/D" type="array">
+      <obj_property name="ElementShortName">D[4:0]</obj_property>
+      <obj_property name="ObjectShortName">D[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/Q" type="array">
+      <obj_property name="ElementShortName">Q[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/Integer_Divider_Top_tb/DUT/DP/R/dataIN_width" type="array">
+      <obj_property name="ElementShortName">dataIN_width[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dataIN_width[31:0]</obj_property>
    </wvobject>
 </wave_config>
