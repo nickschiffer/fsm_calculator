@@ -83,28 +83,39 @@ module CU(
             S0:
                 begin
                     mux_cw <= 3'b1_0_0;
-                    done_err <= 2'b00;
+                    done_err <= 2'b0_0;
                 end
             S1:
                 begin
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b1_0_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_0_1_0;
+                    // {SRY_rst, SRY_ld}
                     SRY_cw <= 2'b0_1;
                     
+                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b100_1_0_1_1; 
                 end         
             S2:
                 begin
+                    // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_0_1;
                     
+                    // {SRY_rst, SRY_ld}
                     SRY_cw <= 2'b0_0;
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_1_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_1_0_0;
                 end         
             S3:
                 begin
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_0_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_0_0_0;
+                    // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_1_1; 
                     
                     if (NS == S5)
@@ -113,19 +124,27 @@ module CU(
                 end         
             S4:
                 begin
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_1_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_1_0_1;
+                    // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_0_1;            
                 end         
             S5:
                 begin
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_1_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_1_0_1;
+                    // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_0_1;
                 end         
             S6:
                 begin
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_0_1_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_0_0_0;
                 end         
             S7:
