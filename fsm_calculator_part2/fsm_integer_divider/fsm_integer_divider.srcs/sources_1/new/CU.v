@@ -112,7 +112,10 @@ module CU(
             S3:
                 begin
                     // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
-                    SRR_cw <= 4'b0_0_0_0;
+                    if (NS == S5)
+                         SRR_cw <= 4'b0_0_0_1;
+                    else
+                        SRR_cw <= 4'b0_0_0_0;
                     // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_0_0_0;
                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
@@ -127,7 +130,7 @@ module CU(
                     // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_1_0_0;
                     // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
-                    SRX_cw <= 4'b0_1_0_1;
+                    SRX_cw <= 4'b0_1_0_0;
                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_0_1;            
                 end         
@@ -151,11 +154,21 @@ module CU(
                 begin
                     if (error)
                         begin
+                            // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
+                            SRR_cw <= 4'b0_0_1_0;
+                            // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
+                            SRX_cw <= 4'b0_0_0_0;
+
                             mux_cw <= 3'b1_0_0;
                             done_err <= 2'b01;
                         end
                     else
                         begin
+                            // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
+                            SRR_cw <= 4'b0_0_0_0;
+                            // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
+                            SRX_cw <= 4'b0_0_0_0;
+
                             mux_cw <= 3'b1_1_1;
                             done_err <= 2'b10;
                         end
