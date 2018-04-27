@@ -73,8 +73,11 @@ module CU(
     end
     
     //State Register (sequential)
-    always @ (posedge clk)
-        CS <= NS;
+    always @ (posedge clk, posedge rst)
+        if (rst)
+            CS <= S0;
+        else
+            CS <= NS;
     
     //Output Logic (combinational) based on output table
     always @ (CS)
