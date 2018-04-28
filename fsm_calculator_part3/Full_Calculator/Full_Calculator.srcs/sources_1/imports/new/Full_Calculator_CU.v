@@ -26,12 +26,13 @@ module Full_Calculator_CU(
     output done,
     
     input Done_Calc, Done_Div,
-    output En_F, En_X, En_y,
+    output En_F, En_X, En_Y,
     output Go_Calc, Go_Div,
     output [1:0] Op_Calc,
     output Sel_H,
     output [1:0] Sel_L,
-    output En_Out_H, En_Out_L
+    output En_Out_H, En_Out_L,
+    output RST_OUT_H, RST_OUT_L
     );
     
     // Encode States
@@ -51,8 +52,8 @@ module Full_Calculator_CU(
     reg [3:0] CS, NS;
     
     // Control Word
-        // cw = {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-    reg [12:0] cw;
+        // cw = {En_F, En_X, En_Y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+    reg [14:0] cw;
     
     // Next-State Logic (combinational) based on the state transition diagram
     always @ (CS, Go)
@@ -96,89 +97,89 @@ module Full_Calculator_CU(
            case(CS)               
                S0:
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________0_____00_______0_________0_______0;
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0________1__________1________0;
                 
                     end
                S1:
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__1_____1_____1_____0________0_______00________0_____00_______0_________0_______0;
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__1_____1_____1_____0________0_______00________0_____00_______0_________0________0__________0________0;
                     
                     end
                S2:
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________0_____00_______0_________0_______0;
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0________0__________0________0;
                     end
                S3:
                     begin
                     if (F[0])
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____1________0_______11________0_____00_______0_________0_______0;
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____1________0_______11________0_____00_______0_________0________0___________0________0;
                     end
                     else
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____1________0_______10________0_____00_______0_________0_______0;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____1________0_______10________0_____00_______0_________0________0___________0________0;                    
                     end                         
                     end
                S4:
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________0_____00_______0_________0_______0;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0________0___________0________0;                    
                     end
                S4p:
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________0_____00_______0_________0_______0;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0________0___________0________0;                    
                     end
                S5:
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________1_______00________0_____00_______0_________0_______0;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________1_______00________0_____00_______0_________0________0___________0________0;                    
                     end
                S6:
                     begin
                     if (Done_Calc)
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________0_____10_______1_________1_______0;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____10_______1_________1________0__________0_________0;                    
                     end
                     else
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________0_____00_______0_________0_______0;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0________0__________0_________0;                    
                     end                    
                     end
                S7:
                     begin
                      if (Done_Div)
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________0_____00_______1_________1_______0;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______1_________1________0__________0_________0;                    
                     end
                     else
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________0_____00_______0_________0_______0;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0________0__________0_________0;                    
                     end                                       
                     end
                S8:
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________1_____01_______1_________1_______0;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________1_____01_______1_________1________0__________0_________0;                    
                     end
                S9:
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done}
-                    cw <= 13'b__0_____0_____0_____0________0_______00________0_____00_______0_________0_______1;                    
+                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0_______0___________0_________1;                    
                     end
             endcase
         end
         
-        assign {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, done} = cw;
+        assign {En_F, En_X, En_Y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done} = cw;
                 
 
                 
