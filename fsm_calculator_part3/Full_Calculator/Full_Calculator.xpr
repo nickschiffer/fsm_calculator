@@ -277,9 +277,11 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/Full_Calculator_DP.v">
+      <File Path="$PSRCDIR/sources_1/imports/new/Full_Calculator_CU.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/new/Full_Calculator_CU.v"/>
+          <Attr Name="ImportTime" Val="1524883195"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>

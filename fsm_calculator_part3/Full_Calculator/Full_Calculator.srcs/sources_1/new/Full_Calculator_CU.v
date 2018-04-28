@@ -20,7 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Full_Calculator_DP(
+module Full_Calculator_CU(
+    input go, clk,
+    input [1:0] F,
+    
+    
 
     );
 endmodule
