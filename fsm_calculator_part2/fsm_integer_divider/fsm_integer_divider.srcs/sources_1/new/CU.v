@@ -21,7 +21,7 @@
 
 
 module CU(
-    input go, clk, rst,
+    input go, clk, rst, R_lt_Y_inf,
     input [7:0] sw,
     output reg [2:0] mux_cw,
     output reg [6:0] UD_counter_cw,
@@ -57,24 +57,27 @@ module CU(
         case(CS)
             S0:     
                 begin
-                    NS = (go) ? S1 : S0;
+                    NS <= (go) ? S1 : S0;
                     if (error)
-                        NS = S7;
+                        NS <= S7;
                 end                     
-            S1:      NS = S2;
-            S2:      NS = S3;
-            S3:      NS = (R_lt_Y) ? S4 : S5;    
-            S4:      NS = (cnt_out == 0) ? S6 : S3;
-            S5:      NS = (cnt_out == 0) ? S6 : S3;
-            S6:      NS = S7;
-            S7:      NS = S0;
-            default: NS = S0;
+            S1:      NS <= S2;
+            S2:      NS <= S3;
+            S3:      NS <= (R_lt_Y_inf) ? S5 : S4;    
+            S4:      NS <= (cnt_out == 0) ? S6 : S3;
+            S5:      NS <= (cnt_out == 0) ? S6 : S3;
+            S6:      NS <= S7;
+            S7:      NS <= S0;
+            default: NS <= S0;
          endcase
     end
     
     //State Register (sequential)
-    always @ (posedge clk)
-        CS <= NS;
+    always @ (posedge clk, posedge rst)
+        if (rst)
+            CS <= S0;
+        else
+            CS <= NS;
     
     //Output Logic (combinational) based on output table
     always @ (CS)
@@ -82,61 +85,117 @@ module CU(
         case(CS)               
             S0:
                 begin
+                    // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
+                    UD_counter_cw <= 7'b000_0_0_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
+                    SRX_cw <= 4'b0_0_0_0;
+                    // {SRY_rst, SRY_ld}
+                    SRY_cw <= 2'b0_0;
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
+                    SRR_cw <= 4'b0_0_0_0;
                     mux_cw <= 3'b1_0_0;
-                    done_err <= 2'b00;
+                    done_err <= 2'b0_0;
                 end
             S1:
                 begin
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b1_0_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_0_1_0;
+                    // {SRY_rst, SRY_ld}
                     SRY_cw <= 2'b0_1;
                     
-                    UD_counter_cw <= 7'b100_1_0_1_1; 
+                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
+                    UD_counter_cw <= 7'b100_1_0_1_1;
+                    
+                    mux_cw <= 3'b1_0_0;
+                    done_err <= 2'b0_0; 
                 end         
             S2:
                 begin
+                    // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_0_1;
                     
+                    // {SRY_rst, SRY_ld}
                     SRY_cw <= 2'b0_0;
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_1_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_1_0_0;
+                    
+                    mux_cw <= 3'b1_0_0;
+                    done_err <= 2'b0_0;
                 end         
             S3:
                 begin
-                    SRR_cw <= 4'b0_0_0_0;
-                    SRX_cw <= 4'b0_0_0_0;
-                    UD_counter_cw <= 7'b000_0_0_1_1; 
-                    
-                    if (NS == S5)
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
+                    if (!R_lt_Y_inf)
                          SRR_cw <= 4'b0_0_0_1;
+                    else
+                        SRR_cw <= 4'b0_0_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
+                    SRX_cw <= 4'b0_0_0_0;
+                    // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
+                    UD_counter_cw <= 7'b000_0_0_1_1;
+                    
+                    mux_cw <= 3'b1_0_0;
+                    done_err <= 2'b0_0;
                                                 
                 end         
             S4:
                 begin
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_1_0_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_1_0_1;
-                    UD_counter_cw <= 7'b000_0_0_0_1;            
+                    // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
+                    UD_counter_cw <= 7'b000_0_0_0_1;
+                    
+                    mux_cw <= 3'b1_0_0;
+                    done_err <= 2'b0_0;            
                 end         
             S5:
                 begin
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_1_0_0;
-                    SRX_cw <= 4'b0_1_0_1;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
+                    SRX_cw <= 4'b0_1_0_0;
+                    // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_0_1;
+                    
+                    mux_cw <= 3'b1_0_0;
+                    done_err <= 2'b0_0;
                 end         
             S6:
                 begin
+                    // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
                     SRR_cw <= 4'b0_0_1_0;
+                    // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_0_0_0;
+                    
+                    
+                    mux_cw <= 3'b1_0_0;
+                    done_err <= 2'b0_0;
                 end         
             S7:
                 begin
                     if (error)
                         begin
+                            // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
+                            SRR_cw <= 4'b0_0_0_0;
+                            // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
+                            SRX_cw <= 4'b0_0_0_0;
+
                             mux_cw <= 3'b1_0_0;
                             done_err <= 2'b01;
                         end
                     else
                         begin
+                            // {SRR_rst, SRR_sl, SRR_sr, SRR_ld}
+                            SRR_cw <= 4'b0_0_0_0;
+                            // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
+                            SRX_cw <= 4'b0_0_0_0;
+
                             mux_cw <= 3'b1_1_1;
                             done_err <= 2'b10;
                         end
@@ -146,6 +205,7 @@ module CU(
     end
     
     assign cs = CS;
+    
               
     
     

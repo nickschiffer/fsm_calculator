@@ -66,9 +66,9 @@ endtask
 task automatic step_1;
     begin
        /*Step 1: Load Initial Values into Registers
-        R[4:0] ? 0
-        X[3:0] ? dividend
-        Y[3:0] ? divisor
+        R[4:0] <- 0
+        X[3:0] <- dividend
+        Y[3:0] <- divisor
        */
         // {RIN_mux_sel, R_mux_sel, Q_mux_sel}
         mux_cw_tb = 3'b1_0_0;
@@ -91,7 +91,7 @@ endtask
 task automatic step_2;
     begin
         /* Step 2: Serial Shift the Concatenated {remainder, dividend} 1 bit to the Left
-        R[4:0] ? {R[3:0], X[3]},  X[3:0] ? {X[2:0], 0}
+        R[4:0] <- {R[3:0], X[3]},  X[3:0] <- {X[2:0], 0}
         */
         SRR_cw_tb = 4'b0_1_0_0;
         SRX_cw_tb = 4'b0_1_0_0;
