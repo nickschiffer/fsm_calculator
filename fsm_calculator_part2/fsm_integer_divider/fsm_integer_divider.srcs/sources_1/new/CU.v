@@ -106,7 +106,9 @@ module CU(
                     SRY_cw <= 2'b0_1;
                     
                      // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
-                    UD_counter_cw <= 7'b100_1_0_1_1; 
+                    UD_counter_cw <= 7'b100_1_0_1_1;
+                    
+                    mux_cw <= 3'b1_0_0; 
                 end         
             S2:
                 begin
@@ -119,6 +121,8 @@ module CU(
                     SRR_cw <= 4'b0_1_0_0;
                     // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_1_0_0;
+                    
+                    mux_cw <= 3'b1_0_0;
                 end         
             S3:
                 begin
@@ -130,7 +134,9 @@ module CU(
                     // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_0_0_0;
                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
-                    UD_counter_cw <= 7'b000_0_0_1_1; 
+                    UD_counter_cw <= 7'b000_0_0_1_1;
+                    
+                    mux_cw <= 3'b1_0_0;
                                                 
                 end         
             S4:
@@ -140,7 +146,9 @@ module CU(
                     // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_1_0_1;
                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
-                    UD_counter_cw <= 7'b000_0_0_0_1;            
+                    UD_counter_cw <= 7'b000_0_0_0_1;
+                    
+                    mux_cw <= 3'b1_0_0;            
                 end         
             S5:
                 begin
@@ -150,6 +158,8 @@ module CU(
                     SRX_cw <= 4'b0_1_0_0;
                     // UD_D, UD_ld, UD_ud, UD_ce, UD_rst
                     UD_counter_cw <= 7'b000_0_0_0_1;
+                    
+                    mux_cw <= 3'b1_0_0;
                 end         
             S6:
                 begin
@@ -157,6 +167,9 @@ module CU(
                     SRR_cw <= 4'b0_0_1_0;
                     // {SRX_rst, SRX_sl, SRX_ld, SRX_rightIn}
                     SRX_cw <= 4'b0_0_0_0;
+                    
+                    
+                    mux_cw <= 3'b1_0_0;
                 end         
             S7:
                 begin
