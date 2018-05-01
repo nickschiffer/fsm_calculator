@@ -20,10 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Calc_MUX1(
-input [2:0] in1, in2, in3, in4,
+module Calc_MUX1 #(parameter Data_width = 4)(
+input [Data_width - 1:0] in1, in2, in3, in4,
 input [1:0] s1,
-output reg [2:0] m1out 
+output reg [Data_width - 1:0] m1out 
 );
 
 always @ (in1, in2, in3, in4, s1)

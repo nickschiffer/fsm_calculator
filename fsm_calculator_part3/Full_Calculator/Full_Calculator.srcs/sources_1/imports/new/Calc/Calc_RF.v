@@ -20,23 +20,23 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Calc_RF(
+module Calc_RF #(parameter Data_width = 4)(
 input clk, rea, reb, we,
 input [1:0] raa, rab, wa,
-input [2:0] din,
-output reg [2:0] douta, doutb
+input [Data_width - 1:0] din,
+output reg [Data_width - 1:0] douta, doutb
 );
 
-reg [2:0] RegFile [3:0];
+reg [Data_width - 1:0] RegFile [3:0];
 
 always @ (rea, reb, raa, rab)
 begin
         if (rea)
             douta = RegFile[raa];
-        else douta = 3'b000;
+        else douta = 0;
         if (reb)
             doutb = RegFile[rab];
-        else doutb = 3'b000;
+        else doutb = 0;
 end
 
 always @ (posedge clk)

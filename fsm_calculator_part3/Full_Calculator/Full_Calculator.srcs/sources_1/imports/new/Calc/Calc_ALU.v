@@ -20,10 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Calc_ALU(
-input [2:0] in1, in2,
+module Calc_ALU #(parameter Data_width = 4)(
+input [Data_width - 1:0] in1, in2,
 input [1:0] c,
-output reg [2:0] aluout
+output reg [Data_width - 1:0] aluout
 );
 
 always @ (in1, in2, c)

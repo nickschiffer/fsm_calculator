@@ -29,10 +29,10 @@ output reg [Data_width - 1:0] out
 always @ (d0, d1, d2, d3, sel)
 begin
        case (sel)
-            00: out <= d0;
-            01: out <= d1;
-            10: out <= d2;
-            11: out <= d3;
+            2'b00: out <= d0;
+            2'b01: out <= d1;
+            2'b10: out <= d2;
+            2'b11: out <= d3;
         endcase
 end
 endmodule

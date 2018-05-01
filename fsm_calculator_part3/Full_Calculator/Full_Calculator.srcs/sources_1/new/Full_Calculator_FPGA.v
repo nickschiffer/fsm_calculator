@@ -28,4 +28,8 @@ module Full_Calculator_FPGA(
     output done,
     output [3:0] H, L
     );
+    
+    supply1 [7:0] vcc;
+    wire DONT_USE, clk_5KHz;
+    wire
 endmodule

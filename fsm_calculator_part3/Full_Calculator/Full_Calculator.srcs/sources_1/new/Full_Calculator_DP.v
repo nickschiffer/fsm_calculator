@@ -40,7 +40,7 @@ wire [3:0] X_Out, Y_Out, Mux_H_Out, Mux_L_Out;
 wire [3:0] PH, PL, Q, R;
 wire [1:0] Div_done_err;
 assign Done_Div = Div_done_err[1];
-wire [2:0] Calc_Out;
+wire [3:0] Calc_Out;
 
 D_FF #(4) X_Reg      (.clk(clk), .rst(1'b0), .en(En_X), .D(X), .Q(X_Out));
 D_FF #(4) Y_Reg      (.clk(clk), .rst(1'b0), .en(En_Y), .D(Y), .Q(Y_Out));
@@ -54,11 +54,11 @@ combinational_unsigned_integer_multiplier MULT (
     .P({PH, PL})
 );
 
-Calculator_Top CALC (
+Calculator_Top #(4) CALC (
     .go(Go_Calc),
     .op(Op_Calc),
     .clk(clk),
-    .in1(X_Out[2:0]), .in2(Y_Out[2:0]),
+    .in1(X_Out), .in2(Y_Out),
     .out(Calc_Out),
     .done(Done_Calc)
 );
@@ -75,8 +75,8 @@ Integer_Divider_Top DIV(
 );
 
 
-MUX2 #(4) MUX_H (.d1(PH), .d0(R), .clk(clk), .sel(Sel_H));
-MUX4 #(4) MUX_L (.d3(4'b0), .d2({1'b0,Calc_Out}), .d1(PL), .d0(Q), .clk(clk), .sel(Sel_L));
+MUX2 #(4) MUX_H (.d1(PH), .d0(R), .sel(Sel_H), .out(Mux_H_Out));
+MUX4 #(4) MUX_L (.d3(4'b0), .d2(Calc_Out), .d1(PL), .d0(Q), .sel(Sel_L), .out(Mux_L_Out));
 
 
 
