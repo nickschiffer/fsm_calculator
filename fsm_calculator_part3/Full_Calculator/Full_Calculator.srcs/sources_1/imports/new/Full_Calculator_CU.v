@@ -22,7 +22,7 @@
 
 module Full_Calculator_CU(
     input Go, clk, rst,
-    input [1:0] F,
+    input [2:0] F,
     output done,
     
     input Done_Calc, Done_Div,
@@ -31,6 +31,7 @@ module Full_Calculator_CU(
     output [1:0] Op_Calc,
     output Sel_H,
     output [1:0] Sel_L,
+    output Calc_Mux_Sel, Mul_Mux_Sel,
     output En_Out_H, En_Out_L,
     output RST_OUT_H, RST_OUT_L
     );
@@ -54,6 +55,8 @@ module Full_Calculator_CU(
     // Control Word
         // cw = {En_F, En_X, En_Y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
     reg [14:0] cw;
+
+    reg Calc_Mux_Sel_internal, Mul_Mux_Sel_internal;
     
     // Next-State Logic (combinational) based on the state transition diagram
     always @ (CS, Go)
@@ -63,15 +66,31 @@ module Full_Calculator_CU(
             S1: NS <= S2;
             S2:
                 begin
-                if (F[1])
+                if (F[2])
                     begin
-                        if (F[0])
-                            NS <= S5;
-                        else
-                            NS <= S4;
+                        Calc_Mux_Sel_internal <= 1'b1;
+                        Mul_Mux_Sel_internal <= 1'b1;   
                     end
                 else
-                    NS <= S3;
+                    begin
+                        Calc_Mux_Sel_internal <= 1'b0;
+                        Mul_Mux_Sel_internal <= 1'b0;
+                    end
+                
+                if (F[2] && F[0])
+                    NS <= S0;
+                else
+                    begin
+                        if (F[1])
+                            begin
+                                if (F[0])
+                                    NS <= S5;
+                                else
+                                    NS <= S4;
+                            end
+                        else
+                            NS <= S3;
+                    end
                 end
             S3: NS <= S6;
             S4: NS <= S4p;
@@ -180,6 +199,8 @@ module Full_Calculator_CU(
         end
         
         assign {En_F, En_X, En_Y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done} = cw;
+        assign Calc_Mux_Sel = Calc_Mux_Sel_internal;
+        assign Mul_Mux_Sel = Mul_Mux_Sel_internal;
                 
 
                 

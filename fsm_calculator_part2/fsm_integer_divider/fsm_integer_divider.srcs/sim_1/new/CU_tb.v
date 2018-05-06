@@ -39,7 +39,7 @@ reg [3:0] divisor_tb;
 assign sw_tb = {R_lt_Y_tb, cnt_out_tb, divisor_tb};
 
 CU DUT (
-    .go(go_tb), .clk(clk_tb),
+    .go(go_tb), .clk(clk_tb), .R_lt_Y_inf(R_lt_Y_tb),
     .sw(sw_tb),
     .mux_cw(mux_cw_tb),
     .UD_counter_cw(UD_counter_cw_tb),
@@ -134,7 +134,7 @@ while (done_err_tb == 0)
                 end
             5:
                 begin
-                    if((SRR_cw_tb != 4'b0_1_0_0) || (SRX_cw_tb != 4'b0_1_0_1) || (UD_counter_cw_tb != 7'b000_0_0_0_1))
+                    if((SRR_cw_tb != 4'b0_1_0_0) || (SRX_cw_tb != 4'b0_1_0_0) || (UD_counter_cw_tb != 7'b000_0_0_0_1))
                     begin
                         $display("Error State %0d",cs_tb);
                         $stop;

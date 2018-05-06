@@ -22,7 +22,7 @@
 
 module Full_Calculator_Top(
     input [3:0] X, Y,
-    input [1:0] F,
+    input [2:0] F,
     input clk, Go, rst,
     output [3:0] Out_H, Out_L,
     output done
@@ -36,7 +36,7 @@ wire Sel_H;
 wire [1:0] Sel_L;
 wire En_Out_H, En_Out_L;
 wire RST_OUT_H, RST_OUT_L;
-wire F_Out;
+wire [2:0] F_Out;
 
 
     Full_Calculator_DP DP (
