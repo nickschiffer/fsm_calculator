@@ -49,8 +49,7 @@ module Full_Calculator_CU(
               S6p = 4'd8,
               S7 = 4'd9,
               S8 = 4'd10,
-              S9 = 4'd11,
-              S10 = 4'd12;
+              S9 = 4'd11;
               
     // Next and Current State
     reg [3:0] CS, NS;
@@ -60,8 +59,6 @@ module Full_Calculator_CU(
     reg [14:0] cw;
 
     reg Calc_Mux_Sel_internal, Mul_Mux_Sel_internal;
-    reg Sel_H_internal;
-    reg [1:0] Sel_L_internal;
     
     reg calc;
     
@@ -91,35 +88,23 @@ module Full_Calculator_CU(
                         if (F[1])
                             begin
                                 if (F[0])
-                                begin
                                     NS <= S5;
-                                    Sel_L_internal <= 1'b00;
-                                    Sel_H_internal <= 1'b0;
-                                end
                                 else
-                                begin
                                     NS <= S4;
-                                    Sel_L_internal <= 2'b01;
-                                    Sel_H_internal <= 1'b1;
-                                end
                             end
                         else
-                        begin
                             NS <= S3;
-                            Sel_L_internal <= 2'b10;
-                            Sel_H_internal <= 1'b0;
-                        end
                     end
                 end
             S3: NS <= S6;
             S4: NS <= S4p;
+            S4p: NS <= S8; 
             S5: NS <= S7;
             S6: NS <= (Done_Calc) ? S9 : S6p;
             S6p: NS <= (Done_Calc) ? S9 : S6;
             S7: NS <= (Done_Div) ? S9 : S7;
             S8: NS <= S9;
-            S9: NS <= S10;
-            S10: NS <= S0; 
+            S9: NS <= S0;
             default: NS <= S0;
         endcase
     end
@@ -146,7 +131,7 @@ module Full_Calculator_CU(
                S0:
                     begin
                     // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0________1__________1________0;
+                    cw <= 15'b__1_____0_____0_____0________0_______00________0_____00_______0_________0________1__________1________0;
                     calc <= 1'b0; 
                     end
                S1:
@@ -158,7 +143,7 @@ module Full_Calculator_CU(
                S2:
                     begin
                     // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0________0__________0________0;
+                    cw <= 15'b__1_____0_____0_____0________0_______00________0_____00_______0_________0________0__________0________0;
                     end
                S3:
                     begin
@@ -234,22 +219,14 @@ module Full_Calculator_CU(
                S9:
                     begin
                     // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________1_______0___________0_________0;                    
-                    end
-                S10:
-                    begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________1_______0___________0_________1;                    
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______0_________0_______0___________0_________1;                    
                     end
             endcase
         end
-        wire [1:0] dummy1;
-        wire dummy2;
-        assign {En_F, En_X, En_Y, Go_Calc, Go_Div, Op_Calc, dummy1, dummy2, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done} = cw;
+        
+        assign {En_F, En_X, En_Y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done} = cw;
         assign Calc_Mux_Sel = Calc_Mux_Sel_internal;
         assign Mul_Mux_Sel = Mul_Mux_Sel_internal;
-        assign Sel_H = Sel_H_internal;
-        assign Sel_L = Sel_L_internal;
         assign cs = CS;
                 
 

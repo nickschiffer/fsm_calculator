@@ -67,7 +67,7 @@ initial
         rst_tb = 1'b0;
         
         
-        F_tb = 3'b000;
+        F_tb = 3'b010;
         go_tb = 1'b1;
         
         tick;
