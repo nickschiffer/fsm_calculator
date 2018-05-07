@@ -71,17 +71,20 @@ initial
         go_tb = 1'b1;
         
         tick;
+        tick;
+        tick;
         
-//        while (done_tb == 0)
-//            begin
-//                tick;
-//                display;
-//            end
-        for (i = 0; i < 100; i = i + 1)
+        while (done_tb == 1'b0)
             begin
                 tick;
                 display;
             end
+        tick;
+//        for (i = 0; i < 100; i = i + 1)
+//            begin
+//                tick;
+//                display;
+//            end
         
         
     
