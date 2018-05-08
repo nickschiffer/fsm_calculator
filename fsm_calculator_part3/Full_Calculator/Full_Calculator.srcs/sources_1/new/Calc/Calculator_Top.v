@@ -20,13 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Calculator_Top(
+module Calculator_Top #(parameter Data_width = 4)(
     input go,
     input [1:0] op,
     input clk,
-    input [2:0] in1, in2,
+    input [Data_width - 1:0] in1, in2,
     output [3:0] cs,
-    output [2:0] out,
+    output [Data_width - 1:0] out,
     output done
 );
 
@@ -44,7 +44,7 @@ Calc_CU CU (
     .cw(cw)
 );
     
-Calc_DP DP (
+Calc_DP #(Data_width) DP (
     .in1(in1),
     .in2(in2),
     .s1(s1),

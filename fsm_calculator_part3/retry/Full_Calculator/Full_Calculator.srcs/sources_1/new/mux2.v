@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/07/2018 03:59:44 PM
+// Create Date: 04/27/2018 09:40:44 PM
 // Design Name: 
-// Module Name: MUX2
+// Module Name: mux2
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,17 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Calc_MUX2 #(parameter Data_width = 4)(
-    input [Data_width - 1:0] in1, in2,
-    input s2,
-    output reg [Data_width - 1:0] m2out
+module MUX2 #(parameter Data_width = 4)(
+input [Data_width - 1:0] d0, d1,
+input sel,
+output reg [Data_width - 1:0] out 
 );
 
-always @ (in1, in2, s2)
+always @ (d0, d1, sel)
 begin
-    if(s2)
-        m2out = in1;
-    else
-        m2out = in2;
+        if (sel)
+            out <= d1;
+        else
+            out <= d0;
 end
 endmodule

@@ -29,7 +29,7 @@ module Integer_Divider_Top(
     output [3:0] cs,
     output [3:0] quotient,
     output [3:0] remainder,
-    output [1:0] err_done
+    output [1:0] err_done // 10 = done, 01 = error
 );
 
 wire [7:0] sw_from_DP;

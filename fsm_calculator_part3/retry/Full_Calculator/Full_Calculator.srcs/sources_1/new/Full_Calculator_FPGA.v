@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/07/2018 03:59:44 PM
+// Create Date: 04/27/2018 10:42:42 PM
 // Design Name: 
-// Module Name: MUX2
+// Module Name: Full_Calculator_FPGA
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,17 +20,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Calc_MUX2 #(parameter Data_width = 4)(
-    input [Data_width - 1:0] in1, in2,
-    input s2,
-    output reg [Data_width - 1:0] m2out
-);
-
-always @ (in1, in2, s2)
-begin
-    if(s2)
-        m2out = in1;
-    else
-        m2out = in2;
-end
+module Full_Calculator_FPGA(
+    input go, clk100MHz, rst, man_clk,
+    input [3:0] X, Y,
+    input [1:0] F,
+    output [7:0] LEDSEL, LEDOUT,
+    output done,
+    output [3:0] H, L
+    );
+    
+    supply1 [7:0] vcc;
+    wire DONT_USE, clk_5KHz;
+    wire
 endmodule

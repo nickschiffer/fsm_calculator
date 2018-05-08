@@ -60,7 +60,7 @@ integer i = 0;
 initial
     begin
         X_tb = 4'd3;
-        Y_tb = 4'd3;
+        Y_tb = 4'd4;
         clk_tb = 1'b0;
         go_tb = 1'b0;
         clk_tb = 1'b0;
@@ -73,13 +73,88 @@ initial
         tick;
         tick;
         tick;
-        
+        $display("Add");
         while (done_tb == 1'b0)
             begin
                 tick;
-                display;
+                //display;
             end
             display;
+            
+        go_tb = 1'b0;
+        tick;
+        go_tb = 1'b1;
+        F_tb = 3'b001;
+        $display("Subtract");
+        while (done_tb == 1'b0)
+            begin
+                tick;
+                //display;
+            end
+            
+            display;
+            
+        go_tb = 1'b0;
+        tick;
+        go_tb = 1'b1;
+        F_tb = 3'b010;
+        $display("Mult");
+        while (done_tb == 1'b0)
+            begin
+                tick;
+                //display;
+            end
+            display;
+            
+        go_tb = 1'b0;
+        tick;
+        go_tb = 1'b1;
+        F_tb = 3'b011;
+        $display("Divide");
+        while (done_tb == 1'b0)
+            begin
+                tick;
+                //display;
+            end
+        display;
+            
+            
+        go_tb = 1'b0;
+        tick;
+        go_tb = 1'b1;
+        F_tb = 3'b100;
+        $display("Increment");
+        while (done_tb == 1'b0)
+            begin
+                tick;
+                //display;
+            end
+        display;
+        
+        go_tb = 1'b0;
+        tick;
+        go_tb = 1'b1;
+        F_tb = 3'b101;
+        $display("Decrement");
+        while (done_tb == 1'b0)
+            begin
+                tick;
+                //display;
+            end
+        display;
+            
+            
+        $display("Square");
+        while (done_tb == 1'b0)
+            begin
+                tick;
+                //display;
+            end
+            display;
+        
+        
+            
+
         //tick;
 //        for (i = 0; i < 100; i = i + 1)
 //            begin

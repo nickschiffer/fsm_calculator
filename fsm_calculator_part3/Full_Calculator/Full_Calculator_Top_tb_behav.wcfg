@@ -3,368 +3,97 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="Full_Calculator_Top_tb_behav.wdb" id="1">
+      <db_ref path="Calculator_Top_tb_behav.wdb" id="1">
          <top_modules>
-            <top_module name="Full_Calculator_Top_tb" />
+            <top_module name="Calculator_Top_tb" />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1200000001fs"></ZoomEndTime>
-      <Cursor1Time time="1200000000fs"></Cursor1Time>
+      <ZoomEndTime time="10000001fs"></ZoomEndTime>
+      <Cursor1Time time="10000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="142"></NameColumnWidth>
-      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+      <ValueColumnWidth column_width="92"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="86" />
-   <wvobject fp_name="/Full_Calculator_Top_tb/X_tb" type="array">
-      <obj_property name="ElementShortName">X_tb[3:0]</obj_property>
-      <obj_property name="ObjectShortName">X_tb[3:0]</obj_property>
+   <WVObjectSize size="19" />
+   <wvobject fp_name="/Calculator_Top_tb/DUT/go" type="logic">
+      <obj_property name="ElementShortName">go</obj_property>
+      <obj_property name="ObjectShortName">go</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/Y_tb" type="array">
-      <obj_property name="ElementShortName">Y_tb[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Y_tb[3:0]</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/op" type="array">
+      <obj_property name="ElementShortName">op[1:0]</obj_property>
+      <obj_property name="ObjectShortName">op[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/go_tb" type="logic">
-      <obj_property name="ElementShortName">go_tb</obj_property>
-      <obj_property name="ObjectShortName">go_tb</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/clk_tb" type="logic">
-      <obj_property name="ElementShortName">clk_tb</obj_property>
-      <obj_property name="ObjectShortName">clk_tb</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/rst_tb" type="logic">
-      <obj_property name="ElementShortName">rst_tb</obj_property>
-      <obj_property name="ObjectShortName">rst_tb</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/F_tb" type="array">
-      <obj_property name="ElementShortName">F_tb[2:0]</obj_property>
-      <obj_property name="ObjectShortName">F_tb[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/Out_H_tb" type="array">
-      <obj_property name="ElementShortName">Out_H_tb[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Out_H_tb[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/Out_L_tb" type="array">
-      <obj_property name="ElementShortName">Out_L_tb[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Out_L_tb[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/done_tb" type="logic">
-      <obj_property name="ElementShortName">done_tb</obj_property>
-      <obj_property name="ObjectShortName">done_tb</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/cs" type="array">
-      <obj_property name="ElementShortName">cs[3:0]</obj_property>
-      <obj_property name="ObjectShortName">cs[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/i" type="array">
-      <obj_property name="ElementShortName">i[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Go" type="logic">
-      <obj_property name="ElementShortName">Go</obj_property>
-      <obj_property name="ObjectShortName">Go</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/clk" type="logic">
+   <wvobject fp_name="/Calculator_Top_tb/DUT/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/rst" type="logic">
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/in1" type="array">
+      <obj_property name="ElementShortName">in1[3:0]</obj_property>
+      <obj_property name="ObjectShortName">in1[3:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/F" type="array">
-      <obj_property name="ElementShortName">F[2:0]</obj_property>
-      <obj_property name="ObjectShortName">F[2:0]</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/in2" type="array">
+      <obj_property name="ElementShortName">in2[3:0]</obj_property>
+      <obj_property name="ObjectShortName">in2[3:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/done" type="logic">
+   <wvobject fp_name="/Calculator_Top_tb/DUT/cs" type="array">
+      <obj_property name="ElementShortName">cs[3:0]</obj_property>
+      <obj_property name="ObjectShortName">cs[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/out" type="array">
+      <obj_property name="ElementShortName">out[3:0]</obj_property>
+      <obj_property name="ObjectShortName">out[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/done" type="logic">
       <obj_property name="ElementShortName">done</obj_property>
       <obj_property name="ObjectShortName">done</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Done_Calc" type="logic">
-      <obj_property name="ElementShortName">Done_Calc</obj_property>
-      <obj_property name="ObjectShortName">Done_Calc</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Done_Div" type="logic">
-      <obj_property name="ElementShortName">Done_Div</obj_property>
-      <obj_property name="ObjectShortName">Done_Div</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/En_F" type="logic">
-      <obj_property name="ElementShortName">En_F</obj_property>
-      <obj_property name="ObjectShortName">En_F</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/En_X" type="logic">
-      <obj_property name="ElementShortName">En_X</obj_property>
-      <obj_property name="ObjectShortName">En_X</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/En_Y" type="logic">
-      <obj_property name="ElementShortName">En_Y</obj_property>
-      <obj_property name="ObjectShortName">En_Y</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Go_Calc" type="logic">
-      <obj_property name="ElementShortName">Go_Calc</obj_property>
-      <obj_property name="ObjectShortName">Go_Calc</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Go_Div" type="logic">
-      <obj_property name="ElementShortName">Go_Div</obj_property>
-      <obj_property name="ObjectShortName">Go_Div</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Op_Calc" type="array">
-      <obj_property name="ElementShortName">Op_Calc[1:0]</obj_property>
-      <obj_property name="ObjectShortName">Op_Calc[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Sel_H" type="logic">
-      <obj_property name="ElementShortName">Sel_H</obj_property>
-      <obj_property name="ObjectShortName">Sel_H</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Sel_L" type="array">
-      <obj_property name="ElementShortName">Sel_L[1:0]</obj_property>
-      <obj_property name="ObjectShortName">Sel_L[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Calc_Mux_Sel" type="logic">
-      <obj_property name="ElementShortName">Calc_Mux_Sel</obj_property>
-      <obj_property name="ObjectShortName">Calc_Mux_Sel</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Mul_Mux_Sel" type="logic">
-      <obj_property name="ElementShortName">Mul_Mux_Sel</obj_property>
-      <obj_property name="ObjectShortName">Mul_Mux_Sel</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/En_Out_H" type="logic">
-      <obj_property name="ElementShortName">En_Out_H</obj_property>
-      <obj_property name="ObjectShortName">En_Out_H</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/En_Out_L" type="logic">
-      <obj_property name="ElementShortName">En_Out_L</obj_property>
-      <obj_property name="ObjectShortName">En_Out_L</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/RST_OUT_H" type="logic">
-      <obj_property name="ElementShortName">RST_OUT_H</obj_property>
-      <obj_property name="ObjectShortName">RST_OUT_H</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/RST_OUT_L" type="logic">
-      <obj_property name="ElementShortName">RST_OUT_L</obj_property>
-      <obj_property name="ObjectShortName">RST_OUT_L</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/cs" type="array">
-      <obj_property name="ElementShortName">cs[3:0]</obj_property>
-      <obj_property name="ObjectShortName">cs[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/CS" type="array">
-      <obj_property name="ElementShortName">CS[3:0]</obj_property>
-      <obj_property name="ObjectShortName">CS[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/NS" type="array">
-      <obj_property name="ElementShortName">NS[3:0]</obj_property>
-      <obj_property name="ObjectShortName">NS[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/cw" type="array">
+   <wvobject fp_name="/Calculator_Top_tb/DUT/cw" type="array">
       <obj_property name="ElementShortName">cw[14:0]</obj_property>
       <obj_property name="ObjectShortName">cw[14:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Calc_Mux_Sel_internal" type="logic">
-      <obj_property name="ElementShortName">Calc_Mux_Sel_internal</obj_property>
-      <obj_property name="ObjectShortName">Calc_Mux_Sel_internal</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/s1" type="array">
+      <obj_property name="ElementShortName">s1[1:0]</obj_property>
+      <obj_property name="ObjectShortName">s1[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/Mul_Mux_Sel_internal" type="logic">
-      <obj_property name="ElementShortName">Mul_Mux_Sel_internal</obj_property>
-      <obj_property name="ObjectShortName">Mul_Mux_Sel_internal</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/wa" type="array">
+      <obj_property name="ElementShortName">wa[1:0]</obj_property>
+      <obj_property name="ObjectShortName">wa[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/calc" type="logic">
-      <obj_property name="ElementShortName">calc</obj_property>
-      <obj_property name="ObjectShortName">calc</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/raa" type="array">
+      <obj_property name="ElementShortName">raa[1:0]</obj_property>
+      <obj_property name="ObjectShortName">raa[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S0" type="array">
-      <obj_property name="ElementShortName">S0[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S0[3:0]</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/rab" type="array">
+      <obj_property name="ElementShortName">rab[1:0]</obj_property>
+      <obj_property name="ObjectShortName">rab[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S1" type="array">
-      <obj_property name="ElementShortName">S1[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S1[3:0]</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/c" type="array">
+      <obj_property name="ElementShortName">c[1:0]</obj_property>
+      <obj_property name="ObjectShortName">c[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S2" type="array">
-      <obj_property name="ElementShortName">S2[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S2[3:0]</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/we" type="logic">
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S3" type="array">
-      <obj_property name="ElementShortName">S3[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S3[3:0]</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/rea" type="logic">
+      <obj_property name="ElementShortName">rea</obj_property>
+      <obj_property name="ObjectShortName">rea</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S4" type="array">
-      <obj_property name="ElementShortName">S4[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S4[3:0]</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/reb" type="logic">
+      <obj_property name="ElementShortName">reb</obj_property>
+      <obj_property name="ObjectShortName">reb</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S4p" type="array">
-      <obj_property name="ElementShortName">S4p[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S4p[3:0]</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/s2" type="logic">
+      <obj_property name="ElementShortName">s2</obj_property>
+      <obj_property name="ObjectShortName">s2</obj_property>
    </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S5" type="array">
-      <obj_property name="ElementShortName">S5[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S5[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S6" type="array">
-      <obj_property name="ElementShortName">S6[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S6[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S7" type="array">
-      <obj_property name="ElementShortName">S7[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S7[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S8" type="array">
-      <obj_property name="ElementShortName">S8[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S8[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/CU/S9" type="array">
-      <obj_property name="ElementShortName">S9[3:0]</obj_property>
-      <obj_property name="ObjectShortName">S9[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/clk" type="logic">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/rst" type="logic">
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/X" type="array">
-      <obj_property name="ElementShortName">X[3:0]</obj_property>
-      <obj_property name="ObjectShortName">X[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Y" type="array">
-      <obj_property name="ElementShortName">Y[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Y[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/F" type="array">
-      <obj_property name="ElementShortName">F[2:0]</obj_property>
-      <obj_property name="ObjectShortName">F[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/En_F" type="logic">
-      <obj_property name="ElementShortName">En_F</obj_property>
-      <obj_property name="ObjectShortName">En_F</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/En_X" type="logic">
-      <obj_property name="ElementShortName">En_X</obj_property>
-      <obj_property name="ObjectShortName">En_X</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/En_Y" type="logic">
-      <obj_property name="ElementShortName">En_Y</obj_property>
-      <obj_property name="ObjectShortName">En_Y</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Go_Calc" type="logic">
-      <obj_property name="ElementShortName">Go_Calc</obj_property>
-      <obj_property name="ObjectShortName">Go_Calc</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Go_Div" type="logic">
-      <obj_property name="ElementShortName">Go_Div</obj_property>
-      <obj_property name="ObjectShortName">Go_Div</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Op_Calc" type="array">
-      <obj_property name="ElementShortName">Op_Calc[1:0]</obj_property>
-      <obj_property name="ObjectShortName">Op_Calc[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Sel_H" type="logic">
-      <obj_property name="ElementShortName">Sel_H</obj_property>
-      <obj_property name="ObjectShortName">Sel_H</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Sel_L" type="array">
-      <obj_property name="ElementShortName">Sel_L[1:0]</obj_property>
-      <obj_property name="ObjectShortName">Sel_L[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Calc_Mux_Sel" type="logic">
-      <obj_property name="ElementShortName">Calc_Mux_Sel</obj_property>
-      <obj_property name="ObjectShortName">Calc_Mux_Sel</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Mul_Mux_Sel" type="logic">
-      <obj_property name="ElementShortName">Mul_Mux_Sel</obj_property>
-      <obj_property name="ObjectShortName">Mul_Mux_Sel</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/En_Out_H" type="logic">
-      <obj_property name="ElementShortName">En_Out_H</obj_property>
-      <obj_property name="ObjectShortName">En_Out_H</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/En_Out_L" type="logic">
-      <obj_property name="ElementShortName">En_Out_L</obj_property>
-      <obj_property name="ObjectShortName">En_Out_L</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/RST_OUT_H" type="logic">
-      <obj_property name="ElementShortName">RST_OUT_H</obj_property>
-      <obj_property name="ObjectShortName">RST_OUT_H</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/RST_OUT_L" type="logic">
-      <obj_property name="ElementShortName">RST_OUT_L</obj_property>
-      <obj_property name="ObjectShortName">RST_OUT_L</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Done_Calc" type="logic">
-      <obj_property name="ElementShortName">Done_Calc</obj_property>
-      <obj_property name="ObjectShortName">Done_Calc</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Done_Div" type="logic">
-      <obj_property name="ElementShortName">Done_Div</obj_property>
-      <obj_property name="ObjectShortName">Done_Div</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Out_H" type="array">
-      <obj_property name="ElementShortName">Out_H[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Out_H[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Out_L" type="array">
-      <obj_property name="ElementShortName">Out_L[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Out_L[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/F_Out" type="array">
-      <obj_property name="ElementShortName">F_Out[2:0]</obj_property>
-      <obj_property name="ObjectShortName">F_Out[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/X_Out" type="array">
-      <obj_property name="ElementShortName">X_Out[3:0]</obj_property>
-      <obj_property name="ObjectShortName">X_Out[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Y_Out" type="array">
-      <obj_property name="ElementShortName">Y_Out[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Y_Out[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Mux_H_Out" type="array">
-      <obj_property name="ElementShortName">Mux_H_Out[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Mux_H_Out[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Mux_L_Out" type="array">
-      <obj_property name="ElementShortName">Mux_L_Out[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Mux_L_Out[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/PH" type="array">
-      <obj_property name="ElementShortName">PH[3:0]</obj_property>
-      <obj_property name="ObjectShortName">PH[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/PL" type="array">
-      <obj_property name="ElementShortName">PL[3:0]</obj_property>
-      <obj_property name="ObjectShortName">PL[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Q" type="array">
-      <obj_property name="ElementShortName">Q[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Q[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/R" type="array">
-      <obj_property name="ElementShortName">R[3:0]</obj_property>
-      <obj_property name="ObjectShortName">R[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Div_done_err" type="array">
-      <obj_property name="ElementShortName">Div_done_err[1:0]</obj_property>
-      <obj_property name="ObjectShortName">Div_done_err[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Calc_Out" type="array">
-      <obj_property name="ElementShortName">Calc_Out[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Calc_Out[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Calc_Mux_Out" type="array">
-      <obj_property name="ElementShortName">Calc_Mux_Out[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Calc_Mux_Out[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/Mul_Mux_Out" type="array">
-      <obj_property name="ElementShortName">Mul_Mux_Out[3:0]</obj_property>
-      <obj_property name="ObjectShortName">Mul_Mux_Out[3:0]</obj_property>
+   <wvobject fp_name="/Calculator_Top_tb/DUT/Data_width" type="array">
+      <obj_property name="ElementShortName">Data_width[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Data_width[31:0]</obj_property>
    </wvobject>
 </wave_config>

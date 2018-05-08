@@ -67,7 +67,7 @@ module Div_CU(
             S4:      NS <= (cnt_out == 0) ? S6 : S3;
             S5:      NS <= (cnt_out == 0) ? S6 : S3;
             S6:      NS <= S7;
-            S7:      NS <= S0;
+            S7:      NS <= S7;
             default: NS <= S0;
          endcase
     end

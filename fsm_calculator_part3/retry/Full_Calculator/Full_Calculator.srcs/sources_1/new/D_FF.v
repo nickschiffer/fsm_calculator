@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: Nickolas Schiffer
+// Engineer: 
 // 
-// Create Date: 03/09/2018 03:55:17 PM
+// Create Date: 04/27/2018 09:06:25 PM
 // Design Name: 
-// Module Name: flopr
+// Module Name: D_FF
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
-// Description: Parameterized D Register
+// Description: 
 // 
 // Dependencies: 
 // 
@@ -20,22 +20,19 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Mult_flopenr #(parameter WIDTH = 8)
-(
-input clk, reset,
-input en,
-input      [WIDTH - 1:0] d,
-output reg [WIDTH - 1:0] q
-);
-
-//asynchronous, active HIGH reset with enable input
-    always @ (posedge clk, posedge reset)
+module D_FF #(parameter Data_width = 4)(
+    input clk, rst, en,
+    input [Data_width - 1:0] D,
+    output reg [Data_width - 1:0] Q
+    );
+    
+    always@ (posedge clk)
     begin
-        if (reset)
-            q <= 0;
+        if (rst)
+            Q <= 0;
         else if (en)
-            q <= d;
+            Q <= D;
         else
-            q <= q;
+            Q <= Q;
     end
 endmodule

@@ -45,24 +45,24 @@ reg [3:0] CS, NS;
 always @ (CS, go)
 begin
     case(CS)
-        Idle:                   NS = (go) ? In1_into_R1 : Idle;
-        In1_into_R1:            NS = In2_into_R2;
-        In2_into_R2:            NS = Wait;
+        Idle:                   NS <= (go) ? In1_into_R1 : Idle;
+        In1_into_R1:            NS <= In2_into_R2;
+        In2_into_R2:            NS <= Wait;
         Wait:
             begin
                   case(op)
-                     2'b11:     NS = R1_plus_R2_into_R3;
-                     2'b10:     NS = R1_minus_R2_into_R3;
-                     2'b01:     NS = R1_and_R2_into_R3;
-                     2'b00:     NS = R1_xor_R2_into_R3;
+                     2'b00:     NS <= R1_plus_R2_into_R3;
+                     2'b01:     NS <= R1_minus_R2_into_R3;
+                     2'b10:     NS <= R1_and_R2_into_R3;
+                     2'b11:     NS <= R1_xor_R2_into_R3;
                   endcase
             end
-        R1_plus_R2_into_R3:     NS = out_done;
-        R1_minus_R2_into_R3:    NS = out_done;
-        R1_and_R2_into_R3:      NS = out_done;
-        R1_xor_R2_into_R3:      NS = out_done;
-        out_done:               NS = out_done;
-        default:                NS = Idle;
+        R1_plus_R2_into_R3:     NS <= out_done;
+        R1_minus_R2_into_R3:    NS <= out_done;
+        R1_and_R2_into_R3:      NS <= out_done;
+        R1_xor_R2_into_R3:      NS <= out_done;
+        out_done:               NS <= out_done;
+        default:                NS <= Idle;
      endcase
 end
 

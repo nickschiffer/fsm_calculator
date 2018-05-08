@@ -63,8 +63,9 @@ module Full_Calculator_CU(
     reg Calc_Mux_Sel_internal, Mul_Mux_Sel_internal;
     reg Sel_H_internal;
     reg [1:0] Sel_L_internal;
+    reg [1:0] Calc_Op_internal;
     wire dummy1;
-    wire [1:0] dummy2;
+    wire [1:0] dummy2, dummy3;
     
     reg calc;
     
@@ -87,8 +88,10 @@ module Full_Calculator_CU(
                         Mul_Mux_Sel_internal <= 1'b0;
                     end
                 
-                if (F[2] && F[0])
+                if (F[2] && F[1] && F[0])
+                    begin
                     NS <= S0;
+                    end
                 else
                     begin
                         if (F[1])
@@ -107,8 +110,12 @@ module Full_Calculator_CU(
                                     end
                             end
                         else
-                            begin
-                            NS <= S3; //Calc
+                            begin //Calc
+                            if (F[0])
+                                Calc_Op_internal <= 2'b01;
+                            else
+                                Calc_Op_internal <= 2'b00;
+                            NS <= S3;
                             Sel_L_internal <= 2'b10;
                             Sel_H_internal <= 1'b0;
                             end
@@ -171,12 +178,12 @@ module Full_Calculator_CU(
                     if (F[0])
                     begin
                     // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                    cw <= 15'b__0_____0_____0_____1________0_______11________0_____00_______0_________0________0___________0________0;
+                    cw <= 15'b__0_____0_____0_____1________0_______01________0_____00_______0_________0________0___________0________0;
                     end
                     else
                     begin
                     // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                    cw <= 15'b__0_____0_____0_____1________0_______10________0_____00_______0_________0________0___________0________0;                    
+                    cw <= 15'b__0_____0_____0_____1________0_______00________0_____00_______0_________0________0___________0________0;                    
                     end                         
                     end
                S4:
@@ -198,27 +205,59 @@ module Full_Calculator_CU(
                     begin
                     if (NS == S9)
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____10_______0_________1________0__________0_________0;                    
+                        if (F[0])
+                        begin
+                            // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                            cw <= 15'b__0_____0_____0_____0________0_______01________0_____10_______0_________1________0__________0_________0;
+                        end
+                        else
+                        begin
+                            // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                            cw <= 15'b__0_____0_____0_____0________0_______00________0_____10_______0_________1________0__________0_________0;
+                        end                    
                     end
                     else
                     begin
-                    // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____10_______0_________0________0__________0_________0;                    
+                        if (F[0])
+                        begin
+                            // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                            cw <= 15'b__0_____0_____0_____0________0_______01________0_____10_______0_________0________0__________0_________0;                    
+                        end
+                        else
+                        begin
+                            // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                            cw <= 15'b__0_____0_____0_____0________0_______00________0_____10_______0_________0________0__________0_________0;
+                        end
                     end                    
                     end
                S6p: begin
                     if (NS == S9)
                        begin
-                       // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                       cw <= 15'b__0_____0_____0_____0________0_______00________0_____10_______0_________1________0__________0_________0;                    
+                           if (F[0])
+                           begin
+                               // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                               cw <= 15'b__0_____0_____0_____0________0_______01________0_____10_______0_________1________0__________0_________0;
+                           end
+                           else
+                           begin
+                               // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                               cw <= 15'b__0_____0_____0_____0________0_______00________0_____10_______0_________1________0__________0_________0;
+                           end                    
                        end
                        else
                        begin
-                       // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                       cw <= 15'b__0_____0_____0_____0________0_______00________0_____10_______0_________0________0__________0_________0;
-                        end
-                    end
+                           if (F[0])
+                           begin
+                               // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                               cw <= 15'b__0_____0_____0_____0________0_______01________0_____10_______0_________0________0__________0_________0;                    
+                           end
+                           else
+                           begin
+                               // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
+                               cw <= 15'b__0_____0_____0_____0________0_______00________0_____10_______0_________0________0__________0_________0;
+                           end
+                       end                    
+                       end
                S7:
                     begin
                      if (Done_Div)
@@ -263,11 +302,12 @@ module Full_Calculator_CU(
             endcase
         end
         
-        assign {En_F, En_X, En_Y, Go_Calc, Go_Div, Op_Calc, dummy1, dummy2, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done} = cw;
+        assign {En_F, En_X, En_Y, Go_Calc, Go_Div, dummy3, dummy1, dummy2, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done} = cw;
         assign Calc_Mux_Sel = Calc_Mux_Sel_internal;
         assign Mul_Mux_Sel = Mul_Mux_Sel_internal;
         assign Sel_H = Sel_H_internal;
         assign Sel_L = Sel_L_internal;
+        assign Op_Calc = Calc_Op_internal;
         assign cs = CS;
                 
 

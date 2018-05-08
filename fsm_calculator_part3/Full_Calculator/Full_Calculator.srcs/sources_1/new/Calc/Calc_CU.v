@@ -61,7 +61,7 @@ begin
         R1_minus_R2_into_R3:    NS = out_done;
         R1_and_R2_into_R3:      NS = out_done;
         R1_xor_R2_into_R3:      NS = out_done;
-        out_done:               NS = Idle;
+        out_done:               NS = out_done;
         default:                NS = Idle;
      endcase
 end
