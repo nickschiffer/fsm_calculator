@@ -145,7 +145,7 @@ module Full_Calculator_CU(
         if (rst)
             begin
             CS = S0;
-            Module_Reset_Internal = 1'b1;
+           // Module_Reset_Internal = 1'b1;
             end
 //        else if ((CS == S6) && (Done_Calc))
 //            begin
