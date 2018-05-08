@@ -158,7 +158,7 @@ module Full_Calculator_FPGA(
     );    
 
     bcd_to_7seg DIV_LED3 (
-         .BCD(Div_Q_ones),
+         .BCD(Div_Q_tens),
          .s(Div_LED3)
     );    
 
