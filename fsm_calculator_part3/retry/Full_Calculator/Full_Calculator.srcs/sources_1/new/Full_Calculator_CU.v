@@ -34,7 +34,8 @@ module Full_Calculator_CU(
     output Calc_Mux_Sel, Mul_Mux_Sel,
     output En_Out_H, En_Out_L,
     output RST_OUT_H, RST_OUT_L,
-    output [3:0] cs
+    output [3:0] cs,
+    output Module_Reset
     );
     
     // Encode States
@@ -66,6 +67,7 @@ module Full_Calculator_CU(
     reg [1:0] Calc_Op_internal;
     wire dummy1;
     wire [1:0] dummy2, dummy3;
+    reg Module_Reset_Internal;
     
     reg calc;
     
@@ -141,7 +143,10 @@ module Full_Calculator_CU(
     always @ (posedge clk, posedge rst)
         
         if (rst)
+            begin
             CS = S0;
+            Module_Reset_Internal = 1'b1;
+            end
 //        else if ((CS == S6) && (Done_Calc))
 //            begin
 //            //CS = S9;
@@ -160,18 +165,21 @@ module Full_Calculator_CU(
                     begin
                     // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
                     cw <= 15'b__1_____0_____0_____0________0_______00________0_____00_______0_________0________1__________1________0;
-                    calc <= 1'b0; 
+                    calc <= 1'b0;
+                    Module_Reset_Internal <= 1'b1; 
                     end
                S1:
                     begin
                     // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
                     cw <= 15'b__1_____1_____1_____0________0_______00________0_____00_______0_________0________0__________0________0;
+                    Module_Reset_Internal <= 1'b1; 
                     
                     end
                S2:
                     begin
                     // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
                     cw <= 15'b__1_____0_____0_____0________0_______00________0_____00_______0_________0________0__________0________0;
+                    Module_Reset_Internal <= 1'b0; 
                     end
                S3:
                     begin
@@ -297,7 +305,8 @@ module Full_Calculator_CU(
               S10:
                     begin
                     // cw <= {En_F, En_X, En_y, Go_Calc, Go_Div, Op_Calc, Sel_H, Sel_L, En_Out_H, En_Out_L, RST_OUT_H, RST_OUT_L, done}
-                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______1_________1_______0___________0_________1;                    
+                    cw <= 15'b__0_____0_____0_____0________0_______00________0_____00_______1_________1_______0___________0_________1;
+                    Module_Reset_Internal <= 1'b1;                    
                     end
             endcase
         end
@@ -308,6 +317,7 @@ module Full_Calculator_CU(
         assign Sel_H = Sel_H_internal;
         assign Sel_L = Sel_L_internal;
         assign Op_Calc = Calc_Op_internal;
+        assign Module_Reset = Module_Reset_Internal;
         assign cs = CS;
                 
 

@@ -65,7 +65,8 @@ Calculator_Top #(4) CALC (
     .clk(clk),
     .in1(X_Out), .in2(Calc_Mux_Out),
     .out(Calc_Out),
-    .done(Done_Calc)
+    .done(Done_Calc),
+    .rst(rst)
 );
 
 Integer_Divider_Top DIV(

@@ -38,11 +38,12 @@ wire [1:0] Sel_L;
 wire Calc_Mux_Sel, Mul_Mux_Sel;
 wire En_Out_H, En_Out_L;
 wire RST_OUT_H, RST_OUT_L;
+wire Module_Reset;
 wire [2:0] F_Out;
 
 
     Full_Calculator_DP DP (
-        .clk(clk), .rst(rst),
+        .clk(clk), .rst(Module_Reset),
         .X(X), .Y(Y), .F(F),
         .En_X(En_X), .En_Y(En_Y), .En_F(En_F),
         .Go_Calc(Go_Calc), .Go_Div(Go_Div),
@@ -69,6 +70,7 @@ wire [2:0] F_Out;
         .Calc_Mux_Sel(Calc_Mux_Sel), .Mul_Mux_Sel(Mul_Mux_Sel),
         .En_Out_H(En_Out_H), .En_Out_L(En_Out_L),
         .RST_OUT_H(RST_OUT_H), .RST_OUT_L(RST_OUT_L),
+        .Module_Reset(Module_Reset),
         .cs(cs)
     );
 

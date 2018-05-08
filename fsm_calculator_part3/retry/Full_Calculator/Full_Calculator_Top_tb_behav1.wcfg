@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1299996550fs"></ZoomStartTime>
-      <ZoomEndTime time="1300000691fs"></ZoomEndTime>
-      <Cursor1Time time="1300000000fs"></Cursor1Time>
+      <ZoomStartTime time="6116229000fs"></ZoomStartTime>
+      <ZoomEndTime time="7478229001fs"></ZoomEndTime>
+      <Cursor1Time time="8100000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="142"></NameColumnWidth>
-      <ValueColumnWidth column_width="84"></ValueColumnWidth>
+      <ValueColumnWidth column_width="76"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="78" />
+   <WVObjectSize size="116" />
    <wvobject fp_name="/Full_Calculator_Top_tb/X_tb" type="array">
       <obj_property name="ElementShortName">X_tb[3:0]</obj_property>
       <obj_property name="ObjectShortName">X_tb[3:0]</obj_property>
@@ -331,5 +331,157 @@
    <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/Data_width" type="array">
       <obj_property name="ElementShortName">Data_width[31:0]</obj_property>
       <obj_property name="ObjectShortName">Data_width[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/go" type="logic">
+      <obj_property name="ElementShortName">go</obj_property>
+      <obj_property name="ObjectShortName">go</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/op" type="array">
+      <obj_property name="ElementShortName">op[1:0]</obj_property>
+      <obj_property name="ObjectShortName">op[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/in1" type="array">
+      <obj_property name="ElementShortName">in1[3:0]</obj_property>
+      <obj_property name="ObjectShortName">in1[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/in2" type="array">
+      <obj_property name="ElementShortName">in2[3:0]</obj_property>
+      <obj_property name="ObjectShortName">in2[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/cs" type="array">
+      <obj_property name="ElementShortName">cs[3:0]</obj_property>
+      <obj_property name="ObjectShortName">cs[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/out" type="array">
+      <obj_property name="ElementShortName">out[3:0]</obj_property>
+      <obj_property name="ObjectShortName">out[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/done" type="logic">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/cw" type="array">
+      <obj_property name="ElementShortName">cw[14:0]</obj_property>
+      <obj_property name="ObjectShortName">cw[14:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/s1" type="array">
+      <obj_property name="ElementShortName">s1[1:0]</obj_property>
+      <obj_property name="ObjectShortName">s1[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/wa" type="array">
+      <obj_property name="ElementShortName">wa[1:0]</obj_property>
+      <obj_property name="ObjectShortName">wa[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/raa" type="array">
+      <obj_property name="ElementShortName">raa[1:0]</obj_property>
+      <obj_property name="ObjectShortName">raa[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/rab" type="array">
+      <obj_property name="ElementShortName">rab[1:0]</obj_property>
+      <obj_property name="ObjectShortName">rab[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/c" type="array">
+      <obj_property name="ElementShortName">c[1:0]</obj_property>
+      <obj_property name="ObjectShortName">c[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/we" type="logic">
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/rea" type="logic">
+      <obj_property name="ElementShortName">rea</obj_property>
+      <obj_property name="ObjectShortName">rea</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/reb" type="logic">
+      <obj_property name="ElementShortName">reb</obj_property>
+      <obj_property name="ObjectShortName">reb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/s2" type="logic">
+      <obj_property name="ElementShortName">s2</obj_property>
+      <obj_property name="ObjectShortName">s2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/CALC/Data_width" type="array">
+      <obj_property name="ElementShortName">Data_width[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Data_width[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/A" type="array">
+      <obj_property name="ElementShortName">A[3:0]</obj_property>
+      <obj_property name="ObjectShortName">A[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/B" type="array">
+      <obj_property name="ElementShortName">B[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/P" type="array">
+      <obj_property name="ElementShortName">P[7:0]</obj_property>
+      <obj_property name="ObjectShortName">P[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/overflow" type="logic">
+      <obj_property name="ElementShortName">overflow</obj_property>
+      <obj_property name="ObjectShortName">overflow</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP_from_AND0" type="array">
+      <obj_property name="ElementShortName">PP_from_AND0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP_from_AND0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP_from_AND1" type="array">
+      <obj_property name="ElementShortName">PP_from_AND1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP_from_AND1[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP_from_AND2" type="array">
+      <obj_property name="ElementShortName">PP_from_AND2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP_from_AND2[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP_from_AND3" type="array">
+      <obj_property name="ElementShortName">PP_from_AND3[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP_from_AND3[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP0" type="array">
+      <obj_property name="ElementShortName">PP0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP1" type="array">
+      <obj_property name="ElementShortName">PP1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP1[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP2" type="array">
+      <obj_property name="ElementShortName">PP2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP2[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP3" type="array">
+      <obj_property name="ElementShortName">PP3[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP3[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP0_plus_PP1" type="array">
+      <obj_property name="ElementShortName">PP0_plus_PP1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP0_plus_PP1[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/PP2_plus_PP3" type="array">
+      <obj_property name="ElementShortName">PP2_plus_PP3[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PP2_plus_PP3[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/P_final" type="array">
+      <obj_property name="ElementShortName">P_final[7:0]</obj_property>
+      <obj_property name="ObjectShortName">P_final[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/overflow_final" type="logic">
+      <obj_property name="ElementShortName">overflow_final</obj_property>
+      <obj_property name="ObjectShortName">overflow_final</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/carry_from_PP0_plus_PP1" type="logic">
+      <obj_property name="ElementShortName">carry_from_PP0_plus_PP1</obj_property>
+      <obj_property name="ObjectShortName">carry_from_PP0_plus_PP1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Full_Calculator_Top_tb/FCALC/DP/MULT/carry_from_PP2_plus_PP3" type="logic">
+      <obj_property name="ElementShortName">carry_from_PP2_plus_PP3</obj_property>
+      <obj_property name="ObjectShortName">carry_from_PP2_plus_PP3</obj_property>
    </wvobject>
 </wave_config>

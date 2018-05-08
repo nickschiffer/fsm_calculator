@@ -21,7 +21,7 @@
 
 
 module Calc_CU(
-    input go, clk,
+    input go, clk, rst,
     input [1:0] op,
     output [3:0] cs,
     output reg [14:0] cw //s1[14:13], wa[12:11], we[10], raa[9:8], rea[7], rab[6:5], reb[4], c[3:2], s2[1], done[0]
@@ -61,14 +61,17 @@ begin
         R1_minus_R2_into_R3:    NS <= out_done;
         R1_and_R2_into_R3:      NS <= out_done;
         R1_xor_R2_into_R3:      NS <= out_done;
-        out_done:               NS <= out_done;
+        out_done:               NS <= (rst) ? Idle : out_done;
         default:                NS <= Idle;
      endcase
 end
 
 //State Register (sequential)
-always @ (posedge clk)
-    CS <= NS;
+always @ (posedge clk, posedge rst)
+    if (rst)
+        CS <= Idle;
+    else
+        CS <= NS;
 
 //Output Logic (combinational) based on output table
 always @ (CS)

@@ -60,7 +60,7 @@ integer i = 0;
 initial
     begin
         X_tb = 4'd3;
-        Y_tb = 4'd4;
+        Y_tb = 4'd2;
         clk_tb = 1'b0;
         go_tb = 1'b0;
         clk_tb = 1'b0;
@@ -143,7 +143,10 @@ initial
             end
         display;
             
-            
+        go_tb = 1'b0;
+        tick;
+        go_tb = 1'b1;
+        F_tb = 3'b110;            
         $display("Square");
         while (done_tb == 1'b0)
             begin

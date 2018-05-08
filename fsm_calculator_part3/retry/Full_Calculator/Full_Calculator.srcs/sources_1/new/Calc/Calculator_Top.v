@@ -23,7 +23,7 @@
 module Calculator_Top #(parameter Data_width = 4)(
     input go,
     input [1:0] op,
-    input clk,
+    input clk, rst,
     input [Data_width - 1:0] in1, in2,
     output [3:0] cs,
     output [Data_width - 1:0] out,
@@ -41,7 +41,8 @@ Calc_CU CU (
     .clk(clk),
     .op(op),
     .cs(cs),
-    .cw(cw)
+    .cw(cw),
+    .rst(rst)
 );
     
 Calc_DP #(Data_width) DP (
